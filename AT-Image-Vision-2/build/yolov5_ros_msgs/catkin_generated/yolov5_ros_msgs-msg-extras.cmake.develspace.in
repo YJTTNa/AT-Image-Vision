@@ -1,0 +1,2 @@
+set(yolov5_ros_msgs_MESSAGE_FILES "/home/yami/AT-Image-Vision-2/src/yolov5_ros_msgs/msg/BoundingBox.msg;/home/yami/AT-Image-Vision-2/src/yolov5_ros_msgs/msg/BoundingBoxes.msg;/home/yami/AT-Image-Vision-2/src/yolov5_ros_msgs/msg/port_serial.msg;/home/yami/AT-Image-Vision-2/src/yolov5_ros_msgs/msg/X_Y_ARG.msg;/home/yami/AT-Image-Vision-2/src/yolov5_ros_msgs/msg/arr.msg;/home/yami/AT-Image-Vision-2/src/yolov5_ros_msgs/msg/arr_rank.msg")
+set(yolov5_ros_msgs_SERVICE_FILES "")
