@@ -4,5 +4,5 @@ PROJECT_PKG_CONFIG_INCLUDE_DIRS = "".split(';') if "" != "" else []
 PROJECT_CATKIN_DEPENDS = "".replace(';', ' ')
 PKG_CONFIG_LIBRARIES_WITH_PREFIX = "".split(';') if "" != "" else []
 PROJECT_NAME = "yolov5_ros"
-PROJECT_SPACE_DIR = "/home/yami/AT-Image-Vision-2/install"
+PROJECT_SPACE_DIR = "/home/yami/AT-Image-Vision/AT-Image-Vision-2/install"
 PROJECT_VERSION = "1.0.1"

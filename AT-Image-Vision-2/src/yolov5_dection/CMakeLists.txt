@@ -121,7 +121,7 @@ catkin_package(
 include_directories(
 # include
   ${catkin_INCLUDE_DIRS}
-  /home/yami/AT-Image-Vision-2/src/yolov5_dection/include
+  /home/yami/AT-Image-Vision/AT-Image-Vision-2/src/yolov5_dection/include
 )
 
 ## Declare a C++ library

@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/yami/AT-Image-Vision-2/src
+CMAKE_SOURCE_DIR = /home/yami/AT-Image-Vision/AT-Image-Vision-2/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/yami/AT-Image-Vision-2/build
+CMAKE_BINARY_DIR = /home/yami/AT-Image-Vision/AT-Image-Vision-2/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -137,14 +137,14 @@ test/fast: test
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/yami/AT-Image-Vision-2/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/yami/AT-Image-Vision-2/build/CMakeFiles /home/yami/AT-Image-Vision-2/build/yolov5_dection/CMakeFiles/progress.marks
-	cd /home/yami/AT-Image-Vision-2/build && $(MAKE) -f CMakeFiles/Makefile2 yolov5_dection/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/yami/AT-Image-Vision-2/build/CMakeFiles 0
+	cd /home/yami/AT-Image-Vision/AT-Image-Vision-2/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/yami/AT-Image-Vision/AT-Image-Vision-2/build/CMakeFiles /home/yami/AT-Image-Vision/AT-Image-Vision-2/build/yolov5_dection/CMakeFiles/progress.marks
+	cd /home/yami/AT-Image-Vision/AT-Image-Vision-2/build && $(MAKE) -f CMakeFiles/Makefile2 yolov5_dection/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/yami/AT-Image-Vision/AT-Image-Vision-2/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/yami/AT-Image-Vision-2/build && $(MAKE) -f CMakeFiles/Makefile2 yolov5_dection/clean
+	cd /home/yami/AT-Image-Vision/AT-Image-Vision-2/build && $(MAKE) -f CMakeFiles/Makefile2 yolov5_dection/clean
 .PHONY : clean
 
 # The main clean target
@@ -154,22 +154,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/yami/AT-Image-Vision-2/build && $(MAKE) -f CMakeFiles/Makefile2 yolov5_dection/preinstall
+	cd /home/yami/AT-Image-Vision/AT-Image-Vision-2/build && $(MAKE) -f CMakeFiles/Makefile2 yolov5_dection/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/yami/AT-Image-Vision-2/build && $(MAKE) -f CMakeFiles/Makefile2 yolov5_dection/preinstall
+	cd /home/yami/AT-Image-Vision/AT-Image-Vision-2/build && $(MAKE) -f CMakeFiles/Makefile2 yolov5_dection/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/yami/AT-Image-Vision-2/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/yami/AT-Image-Vision/AT-Image-Vision-2/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 yolov5_dection/CMakeFiles/dection_basket.dir/rule:
-	cd /home/yami/AT-Image-Vision-2/build && $(MAKE) -f CMakeFiles/Makefile2 yolov5_dection/CMakeFiles/dection_basket.dir/rule
+	cd /home/yami/AT-Image-Vision/AT-Image-Vision-2/build && $(MAKE) -f CMakeFiles/Makefile2 yolov5_dection/CMakeFiles/dection_basket.dir/rule
 .PHONY : yolov5_dection/CMakeFiles/dection_basket.dir/rule
 
 # Convenience name for target.
@@ -179,7 +179,7 @@ dection_basket: yolov5_dection/CMakeFiles/dection_basket.dir/rule
 
 # fast build rule for target.
 dection_basket/fast:
-	cd /home/yami/AT-Image-Vision-2/build && $(MAKE) -f yolov5_dection/CMakeFiles/dection_basket.dir/build.make yolov5_dection/CMakeFiles/dection_basket.dir/build
+	cd /home/yami/AT-Image-Vision/AT-Image-Vision-2/build && $(MAKE) -f yolov5_dection/CMakeFiles/dection_basket.dir/build.make yolov5_dection/CMakeFiles/dection_basket.dir/build
 .PHONY : dection_basket/fast
 
 src/dection_basket.o: src/dection_basket.cpp.o
@@ -188,7 +188,7 @@ src/dection_basket.o: src/dection_basket.cpp.o
 
 # target to build an object file
 src/dection_basket.cpp.o:
-	cd /home/yami/AT-Image-Vision-2/build && $(MAKE) -f yolov5_dection/CMakeFiles/dection_basket.dir/build.make yolov5_dection/CMakeFiles/dection_basket.dir/src/dection_basket.cpp.o
+	cd /home/yami/AT-Image-Vision/AT-Image-Vision-2/build && $(MAKE) -f yolov5_dection/CMakeFiles/dection_basket.dir/build.make yolov5_dection/CMakeFiles/dection_basket.dir/src/dection_basket.cpp.o
 .PHONY : src/dection_basket.cpp.o
 
 src/dection_basket.i: src/dection_basket.cpp.i
@@ -197,7 +197,7 @@ src/dection_basket.i: src/dection_basket.cpp.i
 
 # target to preprocess a source file
 src/dection_basket.cpp.i:
-	cd /home/yami/AT-Image-Vision-2/build && $(MAKE) -f yolov5_dection/CMakeFiles/dection_basket.dir/build.make yolov5_dection/CMakeFiles/dection_basket.dir/src/dection_basket.cpp.i
+	cd /home/yami/AT-Image-Vision/AT-Image-Vision-2/build && $(MAKE) -f yolov5_dection/CMakeFiles/dection_basket.dir/build.make yolov5_dection/CMakeFiles/dection_basket.dir/src/dection_basket.cpp.i
 .PHONY : src/dection_basket.cpp.i
 
 src/dection_basket.s: src/dection_basket.cpp.s
@@ -206,7 +206,7 @@ src/dection_basket.s: src/dection_basket.cpp.s
 
 # target to generate assembly for a file
 src/dection_basket.cpp.s:
-	cd /home/yami/AT-Image-Vision-2/build && $(MAKE) -f yolov5_dection/CMakeFiles/dection_basket.dir/build.make yolov5_dection/CMakeFiles/dection_basket.dir/src/dection_basket.cpp.s
+	cd /home/yami/AT-Image-Vision/AT-Image-Vision-2/build && $(MAKE) -f yolov5_dection/CMakeFiles/dection_basket.dir/build.make yolov5_dection/CMakeFiles/dection_basket.dir/src/dection_basket.cpp.s
 .PHONY : src/dection_basket.cpp.s
 
 # Help Target
@@ -237,6 +237,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/yami/AT-Image-Vision-2/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/yami/AT-Image-Vision/AT-Image-Vision-2/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

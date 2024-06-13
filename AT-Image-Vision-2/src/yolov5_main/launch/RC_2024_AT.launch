@@ -17,10 +17,10 @@
     <param name="autosize" value="true" />
   </node>
 
-  <param name="yolov5_path"       value="$(find yolov5_ros)/yolov5"/>
+  <param name="yolov5_path"       value="$(find yolov5_main)/yolov5"/>
   <param name="use_cpu"           value="false" />
     <node pkg="yolov5_ros" type="5.py" name="yolov5_ros" output="screen" >
-    <param name="weight_pathR"       value="$(find yolov5_ros)/weights/weight/best2_200.pt"/>
+    <param name="weight_pathR"       value="$(find yolov5_main)/weights/weight/best2_200.pt"/>
     <param name="image_topic"       value="/usb_cam/image_raw" />
     <param name="pub_topic"         value="/yolov5/BoundingBoxes" />
     <param name="camera_frame"       value="camera_color_frame"/>
@@ -35,5 +35,5 @@
         <param name="baud" value="$(arg baud_value)" />
     </node> -->
 
-  <node pkg="yolov5_test" type="test7" name="test7" output="screen"/>
+  <node pkg="yolov5_test" type="red_or_blue" name="red_or_blue" output="screen"/>
  </launch>

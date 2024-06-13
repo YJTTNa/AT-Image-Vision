@@ -67,14 +67,14 @@ set(realsense2_description_CONFIG_INCLUDED TRUE)
 
 # set variables for source/devel/install prefixes
 if("FALSE" STREQUAL "TRUE")
-  set(realsense2_description_SOURCE_PREFIX /home/yami/AT-Image-Vision-2/src/realsense_ros/realsense2_description)
-  set(realsense2_description_DEVEL_PREFIX /home/yami/AT-Image-Vision-2/devel)
+  set(realsense2_description_SOURCE_PREFIX /home/yami/AT-Image-Vision/AT-Image-Vision-2/src/realsense_ros/realsense2_description)
+  set(realsense2_description_DEVEL_PREFIX /home/yami/AT-Image-Vision/AT-Image-Vision-2/devel)
   set(realsense2_description_INSTALL_PREFIX "")
   set(realsense2_description_PREFIX ${realsense2_description_DEVEL_PREFIX})
 else()
   set(realsense2_description_SOURCE_PREFIX "")
   set(realsense2_description_DEVEL_PREFIX "")
-  set(realsense2_description_INSTALL_PREFIX /home/yami/AT-Image-Vision-2/install)
+  set(realsense2_description_INSTALL_PREFIX /home/yami/AT-Image-Vision/AT-Image-Vision-2/install)
   set(realsense2_description_PREFIX ${realsense2_description_INSTALL_PREFIX})
 endif()
 
@@ -154,7 +154,7 @@ foreach(library ${libraries})
     set(lib_path "")
     set(lib "${library}-NOTFOUND")
     # since the path where the library is found is returned we have to iterate over the paths manually
-    foreach(path /home/yami/AT-Image-Vision-2/install/lib;/home/yami/AT-Image-Vision-2/devel/lib;/home/yami/realsense_ros/devel/lib;/opt/ros/noetic/lib)
+    foreach(path /home/yami/AT-Image-Vision/AT-Image-Vision-2/install/lib;/home/yami/AT-Image-Vision/AT-Image-Vision-2/devel/lib;/home/yami/realsense_ros/devel/lib;/opt/ros/noetic/lib)
       find_library(lib ${library}
         PATHS ${path}
         NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH)

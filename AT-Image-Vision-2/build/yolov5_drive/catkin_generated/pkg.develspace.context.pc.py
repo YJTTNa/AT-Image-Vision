@@ -4,5 +4,5 @@ PROJECT_PKG_CONFIG_INCLUDE_DIRS = "".split(';') if "" != "" else []
 PROJECT_CATKIN_DEPENDS = "roscpp;rospy;std_msgs;yolov5_ros_msgs;cv_bridge;sensor_msgs;image_transport".replace(';', ' ')
 PKG_CONFIG_LIBRARIES_WITH_PREFIX = "".split(';') if "" != "" else []
 PROJECT_NAME = "yolov5_drive"
-PROJECT_SPACE_DIR = "/home/yami/AT-Image-Vision-2/devel"
+PROJECT_SPACE_DIR = "/home/yami/AT-Image-Vision/AT-Image-Vision-2/devel"
 PROJECT_VERSION = "0.0.0"

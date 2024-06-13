@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/yami/AT-Image-Vision-2/devel/lib/yolov5_drive/descion"
-  "/home/yami/AT-Image-Vision-2/devel/lib/yolov5_drive/descion.pdb"
+  "/home/yami/AT-Image-Vision/AT-Image-Vision-2/devel/lib/yolov5_drive/descion"
+  "/home/yami/AT-Image-Vision/AT-Image-Vision-2/devel/lib/yolov5_drive/descion.pdb"
   "CMakeFiles/descion.dir/src/descion.cpp.o"
 )
 

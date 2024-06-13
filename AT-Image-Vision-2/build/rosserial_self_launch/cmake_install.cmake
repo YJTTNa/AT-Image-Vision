@@ -1,8 +1,8 @@
-# Install script for directory: /home/yami/AT-Image-Vision-2/src/rosserial_self_launch
+# Install script for directory: /home/yami/AT-Image-Vision/AT-Image-Vision-2/src/rosserial_self_launch
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/yami/AT-Image-Vision-2/install")
+  set(CMAKE_INSTALL_PREFIX "/home/yami/AT-Image-Vision/AT-Image-Vision-2/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -38,17 +38,17 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/yami/AT-Image-Vision-2/build/rosserial_self_launch/catkin_generated/installspace/rosserial_self_launch.pc")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/yami/AT-Image-Vision/AT-Image-Vision-2/build/rosserial_self_launch/catkin_generated/installspace/rosserial_self_launch.pc")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/rosserial_self_launch/cmake" TYPE FILE FILES
-    "/home/yami/AT-Image-Vision-2/build/rosserial_self_launch/catkin_generated/installspace/rosserial_self_launchConfig.cmake"
-    "/home/yami/AT-Image-Vision-2/build/rosserial_self_launch/catkin_generated/installspace/rosserial_self_launchConfig-version.cmake"
+    "/home/yami/AT-Image-Vision/AT-Image-Vision-2/build/rosserial_self_launch/catkin_generated/installspace/rosserial_self_launchConfig.cmake"
+    "/home/yami/AT-Image-Vision/AT-Image-Vision-2/build/rosserial_self_launch/catkin_generated/installspace/rosserial_self_launchConfig-version.cmake"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/rosserial_self_launch" TYPE FILE FILES "/home/yami/AT-Image-Vision-2/src/rosserial_self_launch/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/rosserial_self_launch" TYPE FILE FILES "/home/yami/AT-Image-Vision/AT-Image-Vision-2/src/rosserial_self_launch/package.xml")
 endif()
 

@@ -1,4 +1,4 @@
-prefix=/home/yami/AT-Image-Vision-2/install
+prefix=/home/yami/AT-Image-Vision/AT-Image-Vision-2/install
 
 Name: rosserial_self_launch
 Description: Description of rosserial_self_launch

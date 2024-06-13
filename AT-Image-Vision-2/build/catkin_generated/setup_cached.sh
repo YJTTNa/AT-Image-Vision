@@ -7,4 +7,4 @@
 # new environment variables
 
 # modified environment variables
-export PWD='/home/yami/AT-Image-Vision-2/build'
+export PWD='/home/yami/AT-Image-Vision/AT-Image-Vision-2/build'

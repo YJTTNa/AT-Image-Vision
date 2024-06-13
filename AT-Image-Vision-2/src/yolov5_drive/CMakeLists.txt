@@ -74,7 +74,7 @@ include_directories(${EIGEN3_INCLUDE_DIR})
 include_directories(
 # include
   ${catkin_INCLUDE_DIRS}
-  /home/yami/AT-Image-Vision-2/src/yolov5_drive/include/
+  /home/yami/AT-Image-Vision/AT-Image-Vision-2/src/yolov5_drive/include/
 )
 
 ## Declare a C++ library

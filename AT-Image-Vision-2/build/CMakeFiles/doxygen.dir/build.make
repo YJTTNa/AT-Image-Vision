@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/yami/AT-Image-Vision-2/src
+CMAKE_SOURCE_DIR = /home/yami/AT-Image-Vision/AT-Image-Vision-2/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/yami/AT-Image-Vision-2/build
+CMAKE_BINARY_DIR = /home/yami/AT-Image-Vision/AT-Image-Vision-2/build
 
 # Utility rule file for doxygen.
 
@@ -67,6 +67,6 @@ CMakeFiles/doxygen.dir/clean:
 .PHONY : CMakeFiles/doxygen.dir/clean
 
 CMakeFiles/doxygen.dir/depend:
-	cd /home/yami/AT-Image-Vision-2/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/yami/AT-Image-Vision-2/src /home/yami/AT-Image-Vision-2/src /home/yami/AT-Image-Vision-2/build /home/yami/AT-Image-Vision-2/build /home/yami/AT-Image-Vision-2/build/CMakeFiles/doxygen.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/yami/AT-Image-Vision/AT-Image-Vision-2/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/yami/AT-Image-Vision/AT-Image-Vision-2/src /home/yami/AT-Image-Vision/AT-Image-Vision-2/src /home/yami/AT-Image-Vision/AT-Image-Vision-2/build /home/yami/AT-Image-Vision/AT-Image-Vision-2/build /home/yami/AT-Image-Vision/AT-Image-Vision-2/build/CMakeFiles/doxygen.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/doxygen.dir/depend
 

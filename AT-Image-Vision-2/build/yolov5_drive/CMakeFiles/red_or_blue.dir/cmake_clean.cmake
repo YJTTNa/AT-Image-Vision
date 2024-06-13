@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/yami/AT-Image-Vision-2/devel/lib/yolov5_drive/red_or_blue"
-  "/home/yami/AT-Image-Vision-2/devel/lib/yolov5_drive/red_or_blue.pdb"
+  "/home/yami/AT-Image-Vision/AT-Image-Vision-2/devel/lib/yolov5_drive/red_or_blue"
+  "/home/yami/AT-Image-Vision/AT-Image-Vision-2/devel/lib/yolov5_drive/red_or_blue.pdb"
   "CMakeFiles/red_or_blue.dir/src/red_or_blue.cpp.o"
 )
 

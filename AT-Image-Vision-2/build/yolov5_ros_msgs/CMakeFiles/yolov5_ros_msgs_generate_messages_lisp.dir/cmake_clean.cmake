@@ -1,10 +1,10 @@
 file(REMOVE_RECURSE
-  "/home/yami/AT-Image-Vision-2/devel/share/common-lisp/ros/yolov5_ros_msgs/msg/BoundingBox.lisp"
-  "/home/yami/AT-Image-Vision-2/devel/share/common-lisp/ros/yolov5_ros_msgs/msg/BoundingBoxes.lisp"
-  "/home/yami/AT-Image-Vision-2/devel/share/common-lisp/ros/yolov5_ros_msgs/msg/X_Y_ARG.lisp"
-  "/home/yami/AT-Image-Vision-2/devel/share/common-lisp/ros/yolov5_ros_msgs/msg/arr.lisp"
-  "/home/yami/AT-Image-Vision-2/devel/share/common-lisp/ros/yolov5_ros_msgs/msg/arr_rank.lisp"
-  "/home/yami/AT-Image-Vision-2/devel/share/common-lisp/ros/yolov5_ros_msgs/msg/port_serial.lisp"
+  "/home/yami/AT-Image-Vision/AT-Image-Vision-2/devel/share/common-lisp/ros/yolov5_ros_msgs/msg/BoundingBox.lisp"
+  "/home/yami/AT-Image-Vision/AT-Image-Vision-2/devel/share/common-lisp/ros/yolov5_ros_msgs/msg/BoundingBoxes.lisp"
+  "/home/yami/AT-Image-Vision/AT-Image-Vision-2/devel/share/common-lisp/ros/yolov5_ros_msgs/msg/X_Y_ARG.lisp"
+  "/home/yami/AT-Image-Vision/AT-Image-Vision-2/devel/share/common-lisp/ros/yolov5_ros_msgs/msg/arr.lisp"
+  "/home/yami/AT-Image-Vision/AT-Image-Vision-2/devel/share/common-lisp/ros/yolov5_ros_msgs/msg/arr_rank.lisp"
+  "/home/yami/AT-Image-Vision/AT-Image-Vision-2/devel/share/common-lisp/ros/yolov5_ros_msgs/msg/port_serial.lisp"
   "CMakeFiles/yolov5_ros_msgs_generate_messages_lisp"
 )
 

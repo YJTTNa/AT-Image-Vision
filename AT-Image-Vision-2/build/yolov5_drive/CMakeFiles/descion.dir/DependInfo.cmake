@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/yami/AT-Image-Vision-2/src/yolov5_drive/src/descion.cpp" "/home/yami/AT-Image-Vision-2/build/yolov5_drive/CMakeFiles/descion.dir/src/descion.cpp.o"
+  "/home/yami/AT-Image-Vision/AT-Image-Vision-2/src/yolov5_drive/src/descion.cpp" "/home/yami/AT-Image-Vision/AT-Image-Vision-2/build/yolov5_drive/CMakeFiles/descion.dir/src/descion.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -18,11 +18,11 @@ set(CMAKE_TARGET_DEFINITIONS_CXX
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/usr/include/eigen3"
-  "/home/yami/AT-Image-Vision-2/devel/include"
+  "/home/yami/AT-Image-Vision/AT-Image-Vision-2/devel/include"
   "/opt/ros/noetic/include"
   "/opt/ros/noetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp"
   "/usr/include/opencv4"
-  "/home/yami/AT-Image-Vision-2/src/yolov5_drive/include"
+  "/home/yami/AT-Image-Vision/AT-Image-Vision-2/src/yolov5_drive/include"
   )
 
 # Targets to which this target links.

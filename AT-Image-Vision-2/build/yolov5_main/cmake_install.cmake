@@ -1,8 +1,8 @@
-# Install script for directory: /home/yami/AT-Image-Vision-2/src/yolov5_main
+# Install script for directory: /home/yami/AT-Image-Vision/AT-Image-Vision-2/src/yolov5_main
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/yami/AT-Image-Vision-2/install")
+  set(CMAKE_INSTALL_PREFIX "/home/yami/AT-Image-Vision/AT-Image-Vision-2/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -38,17 +38,17 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/yami/AT-Image-Vision-2/build/yolov5_main/catkin_generated/installspace/yolov5_ros.pc")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/yami/AT-Image-Vision/AT-Image-Vision-2/build/yolov5_main/catkin_generated/installspace/yolov5_ros.pc")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/yolov5_ros/cmake" TYPE FILE FILES
-    "/home/yami/AT-Image-Vision-2/build/yolov5_main/catkin_generated/installspace/yolov5_rosConfig.cmake"
-    "/home/yami/AT-Image-Vision-2/build/yolov5_main/catkin_generated/installspace/yolov5_rosConfig-version.cmake"
+    "/home/yami/AT-Image-Vision/AT-Image-Vision-2/build/yolov5_main/catkin_generated/installspace/yolov5_rosConfig.cmake"
+    "/home/yami/AT-Image-Vision/AT-Image-Vision-2/build/yolov5_main/catkin_generated/installspace/yolov5_rosConfig-version.cmake"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/yolov5_ros" TYPE FILE FILES "/home/yami/AT-Image-Vision-2/src/yolov5_main/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/yolov5_ros" TYPE FILE FILES "/home/yami/AT-Image-Vision/AT-Image-Vision-2/src/yolov5_main/package.xml")
 endif()
 

@@ -1,8 +1,8 @@
-prefix=/home/yami/AT-Image-Vision-2/devel
+prefix=/home/yami/AT-Image-Vision/AT-Image-Vision-2/devel
 
 Name: yolov5_ros_msgs
 Description: Description of yolov5_ros_msgs
 Version: 0.0.0
-Cflags: -I/home/yami/AT-Image-Vision-2/devel/include
+Cflags: -I/home/yami/AT-Image-Vision/AT-Image-Vision-2/devel/include
 Libs: -L${prefix}/lib 
 Requires: 

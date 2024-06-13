@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/yami/AT-Image-Vision-2/devel/lib/yolov5_dection/dection_basket"
-  "/home/yami/AT-Image-Vision-2/devel/lib/yolov5_dection/dection_basket.pdb"
+  "/home/yami/AT-Image-Vision/AT-Image-Vision-2/devel/lib/yolov5_dection/dection_basket"
+  "/home/yami/AT-Image-Vision/AT-Image-Vision-2/devel/lib/yolov5_dection/dection_basket.pdb"
   "CMakeFiles/dection_basket.dir/src/dection_basket.cpp.o"
 )
 

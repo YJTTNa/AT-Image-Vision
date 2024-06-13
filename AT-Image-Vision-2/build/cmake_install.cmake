@@ -1,8 +1,8 @@
-# Install script for directory: /home/yami/AT-Image-Vision-2/src
+# Install script for directory: /home/yami/AT-Image-Vision/AT-Image-Vision-2/src
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/yami/AT-Image-Vision-2/install")
+  set(CMAKE_INSTALL_PREFIX "/home/yami/AT-Image-Vision/AT-Image-Vision-2/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -49,95 +49,96 @@ endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
-   "/home/yami/AT-Image-Vision-2/install/_setup_util.py")
+   "/home/yami/AT-Image-Vision/AT-Image-Vision-2/install/_setup_util.py")
   if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
   if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
-file(INSTALL DESTINATION "/home/yami/AT-Image-Vision-2/install" TYPE PROGRAM FILES "/home/yami/AT-Image-Vision-2/build/catkin_generated/installspace/_setup_util.py")
+file(INSTALL DESTINATION "/home/yami/AT-Image-Vision/AT-Image-Vision-2/install" TYPE PROGRAM FILES "/home/yami/AT-Image-Vision/AT-Image-Vision-2/build/catkin_generated/installspace/_setup_util.py")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
-   "/home/yami/AT-Image-Vision-2/install/env.sh")
+   "/home/yami/AT-Image-Vision/AT-Image-Vision-2/install/env.sh")
   if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
   if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
-file(INSTALL DESTINATION "/home/yami/AT-Image-Vision-2/install" TYPE PROGRAM FILES "/home/yami/AT-Image-Vision-2/build/catkin_generated/installspace/env.sh")
+file(INSTALL DESTINATION "/home/yami/AT-Image-Vision/AT-Image-Vision-2/install" TYPE PROGRAM FILES "/home/yami/AT-Image-Vision/AT-Image-Vision-2/build/catkin_generated/installspace/env.sh")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
-   "/home/yami/AT-Image-Vision-2/install/setup.bash;/home/yami/AT-Image-Vision-2/install/local_setup.bash")
+   "/home/yami/AT-Image-Vision/AT-Image-Vision-2/install/setup.bash;/home/yami/AT-Image-Vision/AT-Image-Vision-2/install/local_setup.bash")
   if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
   if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
-file(INSTALL DESTINATION "/home/yami/AT-Image-Vision-2/install" TYPE FILE FILES
-    "/home/yami/AT-Image-Vision-2/build/catkin_generated/installspace/setup.bash"
-    "/home/yami/AT-Image-Vision-2/build/catkin_generated/installspace/local_setup.bash"
+file(INSTALL DESTINATION "/home/yami/AT-Image-Vision/AT-Image-Vision-2/install" TYPE FILE FILES
+    "/home/yami/AT-Image-Vision/AT-Image-Vision-2/build/catkin_generated/installspace/setup.bash"
+    "/home/yami/AT-Image-Vision/AT-Image-Vision-2/build/catkin_generated/installspace/local_setup.bash"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
-   "/home/yami/AT-Image-Vision-2/install/setup.sh;/home/yami/AT-Image-Vision-2/install/local_setup.sh")
+   "/home/yami/AT-Image-Vision/AT-Image-Vision-2/install/setup.sh;/home/yami/AT-Image-Vision/AT-Image-Vision-2/install/local_setup.sh")
   if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
   if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
-file(INSTALL DESTINATION "/home/yami/AT-Image-Vision-2/install" TYPE FILE FILES
-    "/home/yami/AT-Image-Vision-2/build/catkin_generated/installspace/setup.sh"
-    "/home/yami/AT-Image-Vision-2/build/catkin_generated/installspace/local_setup.sh"
+file(INSTALL DESTINATION "/home/yami/AT-Image-Vision/AT-Image-Vision-2/install" TYPE FILE FILES
+    "/home/yami/AT-Image-Vision/AT-Image-Vision-2/build/catkin_generated/installspace/setup.sh"
+    "/home/yami/AT-Image-Vision/AT-Image-Vision-2/build/catkin_generated/installspace/local_setup.sh"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
-   "/home/yami/AT-Image-Vision-2/install/setup.zsh;/home/yami/AT-Image-Vision-2/install/local_setup.zsh")
+   "/home/yami/AT-Image-Vision/AT-Image-Vision-2/install/setup.zsh;/home/yami/AT-Image-Vision/AT-Image-Vision-2/install/local_setup.zsh")
   if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
   if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
-file(INSTALL DESTINATION "/home/yami/AT-Image-Vision-2/install" TYPE FILE FILES
-    "/home/yami/AT-Image-Vision-2/build/catkin_generated/installspace/setup.zsh"
-    "/home/yami/AT-Image-Vision-2/build/catkin_generated/installspace/local_setup.zsh"
+file(INSTALL DESTINATION "/home/yami/AT-Image-Vision/AT-Image-Vision-2/install" TYPE FILE FILES
+    "/home/yami/AT-Image-Vision/AT-Image-Vision-2/build/catkin_generated/installspace/setup.zsh"
+    "/home/yami/AT-Image-Vision/AT-Image-Vision-2/build/catkin_generated/installspace/local_setup.zsh"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
-   "/home/yami/AT-Image-Vision-2/install/.rosinstall")
+   "/home/yami/AT-Image-Vision/AT-Image-Vision-2/install/.rosinstall")
   if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
   if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
-file(INSTALL DESTINATION "/home/yami/AT-Image-Vision-2/install" TYPE FILE FILES "/home/yami/AT-Image-Vision-2/build/catkin_generated/installspace/.rosinstall")
+file(INSTALL DESTINATION "/home/yami/AT-Image-Vision/AT-Image-Vision-2/install" TYPE FILE FILES "/home/yami/AT-Image-Vision/AT-Image-Vision-2/build/catkin_generated/installspace/.rosinstall")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/yami/AT-Image-Vision-2/build/gtest/cmake_install.cmake")
-  include("/home/yami/AT-Image-Vision-2/build/realsense_ros/realsense2_description/cmake_install.cmake")
-  include("/home/yami/AT-Image-Vision-2/build/rosserial_self_launch/cmake_install.cmake")
-  include("/home/yami/AT-Image-Vision-2/build/realsense_ros/realsense2_camera/cmake_install.cmake")
-  include("/home/yami/AT-Image-Vision-2/build/yolov5_main/cmake_install.cmake")
-  include("/home/yami/AT-Image-Vision-2/build/yolov5_ros_msgs/cmake_install.cmake")
-  include("/home/yami/AT-Image-Vision-2/build/yolov5_dection/cmake_install.cmake")
-  include("/home/yami/AT-Image-Vision-2/build/yolov5_drive/cmake_install.cmake")
+  include("/home/yami/AT-Image-Vision/AT-Image-Vision-2/build/gtest/cmake_install.cmake")
+  include("/home/yami/AT-Image-Vision/AT-Image-Vision-2/build/realsense_ros/realsense2_description/cmake_install.cmake")
+  include("/home/yami/AT-Image-Vision/AT-Image-Vision-2/build/rosserial_self_launch/cmake_install.cmake")
+  include("/home/yami/AT-Image-Vision/AT-Image-Vision-2/build/realsense_ros/realsense2_camera/cmake_install.cmake")
+  include("/home/yami/AT-Image-Vision/AT-Image-Vision-2/build/yolov5_launch/cmake_install.cmake")
+  include("/home/yami/AT-Image-Vision/AT-Image-Vision-2/build/yolov5_main/cmake_install.cmake")
+  include("/home/yami/AT-Image-Vision/AT-Image-Vision-2/build/yolov5_ros_msgs/cmake_install.cmake")
+  include("/home/yami/AT-Image-Vision/AT-Image-Vision-2/build/yolov5_dection/cmake_install.cmake")
+  include("/home/yami/AT-Image-Vision/AT-Image-Vision-2/build/yolov5_drive/cmake_install.cmake")
 
 endif()
 
@@ -149,5 +150,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/yami/AT-Image-Vision-2/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/yami/AT-Image-Vision/AT-Image-Vision-2/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

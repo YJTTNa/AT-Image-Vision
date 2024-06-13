@@ -1,4 +1,4 @@
-prefix=/home/yami/AT-Image-Vision-2/install
+prefix=/home/yami/AT-Image-Vision/AT-Image-Vision-2/install
 
 Name: yolov5_dection
 Description: Description of yolov5_dection

@@ -1,4 +1,4 @@
-prefix=/home/yami/AT-Image-Vision-2/devel
+prefix=/home/yami/AT-Image-Vision/AT-Image-Vision-2/devel
 
 Name: yolov5_dection
 Description: Description of yolov5_dection

@@ -1,2 +1,2 @@
-set(realsense2_camera_MESSAGE_FILES "/home/yami/AT-Image-Vision-2/src/realsense_ros/realsense2_camera/msg/IMUInfo.msg;/home/yami/AT-Image-Vision-2/src/realsense_ros/realsense2_camera/msg/Extrinsics.msg;/home/yami/AT-Image-Vision-2/src/realsense_ros/realsense2_camera/msg/Metadata.msg")
-set(realsense2_camera_SERVICE_FILES "/home/yami/AT-Image-Vision-2/src/realsense_ros/realsense2_camera/srv/DeviceInfo.srv")
+set(realsense2_camera_MESSAGE_FILES "/home/yami/AT-Image-Vision/AT-Image-Vision-2/src/realsense_ros/realsense2_camera/msg/IMUInfo.msg;/home/yami/AT-Image-Vision/AT-Image-Vision-2/src/realsense_ros/realsense2_camera/msg/Extrinsics.msg;/home/yami/AT-Image-Vision/AT-Image-Vision-2/src/realsense_ros/realsense2_camera/msg/Metadata.msg")
+set(realsense2_camera_SERVICE_FILES "/home/yami/AT-Image-Vision/AT-Image-Vision-2/src/realsense_ros/realsense2_camera/srv/DeviceInfo.srv")
