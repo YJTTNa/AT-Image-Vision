@@ -35,12 +35,7 @@ namespace Image_vision {
             static bool Ball_Compare(const BoundingBox & a , const BoundingBox &b) { return a.ymin > b.ymin; }
 
         private:
-            //* 用于累加
-            std::unordered_set<int> My_set;
-            std::unordered_map<int, int> My_map;
-            int Re_Set = -1;
             int Mode = -1;
-            int Send_num = 0;
     };
 } // namespace Image_vision
 

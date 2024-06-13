@@ -8,7 +8,7 @@
 
 //// 可以发三要备选******
 
-
+// 一定要等到甩标志位可以给数
 #include "yolov5_drive/descion.h"
 
 namespace Image_vision {
@@ -33,6 +33,7 @@ namespace Image_vision {
             spinner.spin();
         }
     }
+
     void Descion_Machine::TD_location(const X_Y_ARG & msg) {
         static ros::NodeHandle nh;
         static ros::Publisher message_pub = nh.advertise< port_serial >("basket_id", 10);
@@ -51,37 +52,22 @@ namespace Image_vision {
         else {
             ROS_INFO("Have a problen");
         }
-        // 即为告诉我不需要数据了 
         // 整体的逻辑还是 mode=1 为识别模式 mode=2 为发送模式 
         if (msg.mode == 1) {
 
             if (Re_Set == 1) {
                 Send_num = 0;
-                My_map.clear();
-                My_set.clear();
             }
             ROS_INFO("1 puls ");
             Re_Set = 0;
             Mode = msg.mode;
         }
-        // 将5次的数据取均值发送不使用额外数据
         if (msg.mode == 2) {
-            
-            // 这里提前判断一下状态
             if (Re_Set == 0) {
-                int Temp{};
-                for (int num : My_set) {
-                    if (My_map[num] >= Temp) {
-                        Temp = My_map[num];
-                        Send_num = num;
-                    }
-                }
                 Re_Set = 1;
             }
             ROS_INFO("2 puls");
-
             Send_num = Deq.Find_Multifrequency();
-
             if (Send_num == 0) {
                 // 这里是博弈代码
                 ROS_INFO("%d", Send_num);
@@ -91,63 +77,60 @@ namespace Image_vision {
                 Bask_ID.id = Send_num;
                 message_pub.publish(Bask_ID);
             }
-            // if (Send_num / 10 != 0) {
-            //     ROS_INFO("%d", Send_num);
-            //     Mode = msg.mode;
-            //     Bask_ID.id = Send_num / 10;
-            //     message_pub.publish(Bask_ID);
-            // }
-            // 博弈的0
-            // else {
-            //     ROS_INFO("%d", Send_num);
-            //     Mode = msg.mode;
-            //     Bask_ID.id = Send_num / 10;
-            //     Bask_ID.distance = 30;
-            //     message_pub.publish(Bask_ID);
-            // }
         }
     }
     
     void Descion_Machine::Key_location(const Int32 & msg) {
+        static ros::NodeHandle nh;
+        static ros::Publisher message_pub = nh.advertise< port_serial >("basket_id", 10);
+        static port_serial Bask_ID;
         if (msg.data == 1) {
             if (Re_Set == 1) {
+                // 这里考虑给不给零
                 Send_num = 0;
-                My_map.clear();
-                My_set.clear();
             }
             Re_Set = 0;
             Mode = msg.data;
-            ROS_INFO("1");
+            ROS_INFO("now mode 1");
         }
-        // if (msg.data == 2) {
-        //     if (Re_Set == 0) {
-        //         int Temp{};
-        //         for (int num : My_set) {
-        //             if (My_map[num] >= Temp) {
-        //                 Temp = My_map[num];
-        //                 Send_num = num;
-        //             }
-        //         }
-        //         Re_Set = 1;
-        //     }
-        //     if (Send_num / 10 != 0) {
-        //         ROS_INFO("2");
-        //         ROS_INFO("%d", Send_num);
-        //         Mode = msg.data;
-        //         //Bask_ID.id = Send_num / 10;
-        //         //message_pub.publish(Bask_ID);
-        //     }
-        //     else {
-        //         ROS_INFO("2");
-        //         ROS_INFO("%d", Send_num);
-        //         Mode = msg.data;
-        //         //Bask_ID.id = Send_num / 10;
-        //         Bask_ID.distance = 30;
-        //         //message_pub.publish(Bask_ID);
-        //     }
-    }
-    // 瞎放的学校的处理办法
+        if (msg.data == 2) {
+            if (Re_Set == 0) {
+                Re_Set = 1;
+            }
+            ROS_INFO("2 puls");
+            Send_num = Deq.Find_Multifrequency();
+            if (Send_num == 0) {
+                // 这里是博弈代码
+                ROS_INFO("%d", Send_num);
+            }
+            else {
+                ROS_INFO("%d", Send_num);
+                Bask_ID.id = Send_num;
+                message_pub.publish(Bask_ID);
+            }
+        }
+        if (msg.data == 3) { 
+            red = 1;
+            blue = 2;
+            ROS_INFO("My are red!!");
+        }
 
+        if (msg.data == 4) {
+            red = 2;
+            blue = 1;
+            ROS_INFO("My are blue!!");
+        }
+    }
+    // 考虑 瞎放的学校的处理办法
+
+    void Descion_Machine::message(const arr_rank & msg) {
+        // 先存储先前的排序 可能有用
+        Last_Arr_And_Rank.arrs = msg.arrs;
+        Last_Arr_And_Rank.rank = msg.rank;
+        // 这里需要放出权限
+        if (Mode == 1) this->Lost_or_Win(msg);
+    }
+    // 注意这个写法
     int Descion_Machine::Mark(const arr_rank Mark_Arr_Rank) {
         int Mark = 0;
         for (int i = 0; i <= 4; ++i) {
@@ -182,22 +165,9 @@ namespace Image_vision {
                 //*C: 中类   --
                 // 2. 红红蓝
                 // 3. 蓝蓝红
-
         }
-        return 0;
+        return Mark;
         // 用完Last_Mark 记得更新
-    }
-
-    /*
-        这里处理贴向非博弈
-    */
-    void Descion_Machine::message(const arr_rank & msg) {
-        // 先存储先前的排序
-        Last_Arr_And_Rank.arrs = msg.arrs;
-        Last_Arr_And_Rank.rank = msg.rank;
-        // 这里需要放出权限
-        this->Lost_or_Win(msg);
-
     }
     // 封装输赢函数
     void Descion_Machine::Lost_or_Win(const arr_rank arr) {
@@ -221,42 +191,44 @@ namespace Image_vision {
                 Bluee = 0;
             }
         }
-        if (Win == 3) {
-            if (Lost_Winner_Num >= 5) {
-                ROS_INFO("%s", trackerStateMachine.My_string_state().c_str());
-                trackerStateMachine.Set_WINNER();
-                ROS_INFO("%s", trackerStateMachine.My_string_state().c_str());
-            }
+        // 简单累计 防止误判
+        // 防止少识别了以为不是大胜状态
+        if (Win >= 3) {
+            ROS_INFO("before state %s", trackerStateMachine.My_string_state().c_str());
+            if (Lost_Winner_Num >= 5) trackerStateMachine.Set_WINNER();
             Lost_Winner_Num++;
+            ROS_INFO("now state %s", trackerStateMachine.My_string_state().c_str());
         }
-        else if (Lost == 3) {
-            if (Lost_Winner_Num >= 5) {
-                ROS_INFO("%s", trackerStateMachine.My_string_state().c_str());
-                trackerStateMachine.Set_FALSE();
-                ROS_INFO("%s", trackerStateMachine.My_string_state().c_str());
-            }
+        else if (Lost >= 3) {
+            ROS_INFO("before state %s", trackerStateMachine.My_string_state().c_str());
+            if (Lost_Winner_Num >= 5) trackerStateMachine.Set_FALSE();
             Lost_Winner_Num++;
+            ROS_INFO("now state %s", trackerStateMachine.My_string_state().c_str());
         }
         else {
-            // 调用别的函数
-            if (Lost_Winner_Num > 0) Lost_Winner_Num = 0;
-            this->Docile_Anger(arr);
+            // 防止少识别以为不是大胜
+            // 调用别的函数 跑一个按梯度降值
+            ROS_INFO("before state %s", trackerStateMachine.My_string_state().c_str());
+            if (Lost_Winner_Num > 10) Lost_Winner_Num = 5;
+            else if (Lost_Winner_Num >= 5) {
+                Lost_Winner_Num = 2;
+                this->Docile_Anger(arr);
+            }
+            else if (Lost_Winner_Num < 5) {
+                Lost_Winner_Num = 0;
+                this->Docile_Anger(arr);
+            }
+            
         }
     }
-    void Descion_Machine::Docile_Anger(const arr_rank arr_rank_Mark) {
-        // 调用评分函数
-        // 更新当前状态
-        ROS_INFO("Last_State is %s", trackerStateMachine.My_string_state().c_str());
-        // if (TrackerStateMachine::State::WINNER == trackerStateMachine.Get_State() || \
-        //     TrackerStateMachine::State::FALSE == trackerStateMachine.Get_State()) {
-        //         // 这可能是在调试 那么直接更新即可
 
-        // }
+    void Descion_Machine::Docile_Anger(const arr_rank arr_rank_Mark) {
         // 调用评估函数 先跑简单的流程
         int Temp_rank_Mark = Mark(arr_rank_Mark);
         // 调用评估函数之后
         if (Temp_rank_Mark > Mark_Treshold) {
             // 接上变量并入队列
+            // 在要入队列之前需要先打印状态
             Deq.push_back(Basket_Attack(arr_rank_Mark));
         }
         else {
@@ -265,7 +237,7 @@ namespace Image_vision {
         // 可以与那个逻辑一样取最近的 不过这样会出问题
         // 所以建立容器 
     }
-    //* Defend 防止对面大胜
+    //* Defend 防止对面大胜 
     int Descion_Machine::Basket_Defend(const arr_rank arr_and_rank) {
         for (int i = 0; i <= 4; ++i) {
             if (arr_and_rank.arrs[i].arr[0] == 2 && arr_and_rank.arrs[i].arr[2] == blue) return i + 1;
@@ -298,12 +270,15 @@ namespace Image_vision {
         //* 这里还需要增加
         return 0;
     }
+
+
+    // 这个属于新写的容器  
     int Fixed_Deque::Find_Multifrequency() const {
         int Temp {};
         int ssend_num {};
         if (data.size() != 5) {
             ssend_num = data.at(data.size() - 1);
-        }else {
+        } else {
             for (const auto & Ha_num : data) {
                 if (My_set.find(Ha_num) == My_set.end()) {
                     My_set.insert(Ha_num);
@@ -321,6 +296,15 @@ namespace Image_vision {
                 }
             }
         }
-            return ssend_num;
+        My_map.clear();
+        My_set.clear();
+        return ssend_num;
     }
 } // namespace 
+
+int main(int argc, char * argv[]) {
+    ros::init(argc, argv, "descion");
+    Image_vision::Descion_Machine desicion_machine;
+    desicion_machine.init_ROS_Sub(1);
+    return 0;
+}

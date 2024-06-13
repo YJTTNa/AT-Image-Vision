@@ -176,15 +176,6 @@ namespace Image_vision {
             // 这里是Mark的阈值
             int Mark_Treshold = 10;
     };
-
-// int main() {  
-//     FixedSizeDeque fdq(5); // 创建一个最大容量为5的FixedSizeDeque  
-//     for (int i = 0; i < 10; ++i) {  
-//         fdq.push_back(i); // 尝试添加10个元素  
-//         fdq.print();     // 打印当前队列的元素  
-//     }  
-//     return 0;  
-// }
 }
 
 

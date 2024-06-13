@@ -17,10 +17,10 @@ class Yolo_Dect:
     def __init__(self):
 
         yolov5_path = rospy.get_param('/yolov5_path', '')
-        weight_pathK = rospy.get_param('~weight_path', '')
+        weight_path = rospy.get_param('~weight_path', '')
         conf = rospy.get_param('~conf', '0.5')
         iou = rospy.get_param('~iou', '0.35')
-        self.model = torch.hub.load(yolov5_path, 'custom', path=weight_pathK, source='local')
+        self.model = torch.hub.load(yolov5_path, 'custom', path=weight_path, source='local')
         if (rospy.get_param('/use_cpu', 'false')):
             self.model.cpu()
         else:
@@ -79,7 +79,7 @@ class Yolo_Dect:
                 boundingBox.num = np.int16(count)
                 self.boundingBoxes.bounding_boxes.append(boundingBox)
         self.position_pub.publish(self.boundingBoxes)
-        cv2.line(img, (320, 1), (320, 450), (0, 0, 0), 1)
+        cv2.line(img, (320, 1), (320, 450), (0, 0, 0), 2)
         cv2.imshow('YOLOv5', img)
 
 def main():
