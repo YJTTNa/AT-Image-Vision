@@ -1,6 +1,7 @@
 file(REMOVE_RECURSE
   "/home/yami/AT-Image-Vision/AT-Image-Vision-2/devel/include/yolov5_ros_msgs/BoundingBox.h"
   "/home/yami/AT-Image-Vision/AT-Image-Vision-2/devel/include/yolov5_ros_msgs/BoundingBoxes.h"
+  "/home/yami/AT-Image-Vision/AT-Image-Vision-2/devel/include/yolov5_ros_msgs/M.h"
   "/home/yami/AT-Image-Vision/AT-Image-Vision-2/devel/include/yolov5_ros_msgs/X_Y_ARG.h"
   "/home/yami/AT-Image-Vision/AT-Image-Vision-2/devel/include/yolov5_ros_msgs/arr.h"
   "/home/yami/AT-Image-Vision/AT-Image-Vision-2/devel/include/yolov5_ros_msgs/arr_rank.h"

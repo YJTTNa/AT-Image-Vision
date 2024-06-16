@@ -16,7 +16,6 @@ class BoundingBoxes(genpy.Message):
   _full_text = """Header header
 Header image_header
 BoundingBox[] bounding_boxes
-
 ================================================================================
 MSG: std_msgs/Header
 # Standard metadata for higher-level stamped data types.
@@ -41,8 +40,7 @@ int64 ymin
 int64 xmax
 int64 ymax
 int16 num
-string Class
-"""
+string Class"""
   __slots__ = ['header','image_header','bounding_boxes']
   _slot_types = ['std_msgs/Header','std_msgs/Header','yolov5_ros_msgs/BoundingBox[]']
 

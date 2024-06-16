@@ -17,7 +17,6 @@ namespace Image_vision {
     }
     void Descion_Machine::init_ROS_Sub(bool DEBUG_) {
         if (DEBUG_) {
-            setlocale(LC_ALL , " " );
             ros::NodeHandle ph;
             ros::Subscriber test_location = ph.subscribe("Key_mode", 1, &Descion_Machine::Key_location, this);
             ros::Subscriber Arr_Rank_sub = ph.subscribe("My_arr_rank", 1, &Descion_Machine::message, this);
@@ -25,7 +24,6 @@ namespace Image_vision {
             spinner.spin();
         }
         else {
-            setlocale(LC_ALL , " " );
             ros::NodeHandle ph;
             ros::Subscriber location = ph.subscribe("X_Y_ARG", 1, &Descion_Machine::TD_location, this);
             ros::Subscriber Arr_Rank_sub = ph.subscribe("My_arr_rank", 1, &Descion_Machine::message, this);
@@ -99,8 +97,10 @@ namespace Image_vision {
             if (Re_Set == 0) {
                 Re_Set = 1;
             }
+            Mode = msg.data;
             ROS_INFO("2 puls");
             Send_num = Deq.Find_Multifrequency();
+            //Send_num = Deq.Find_Multifrequency();
             if (Send_num == 0) {
                 // 这里是博弈代码
                 ROS_INFO("%d", Send_num);
@@ -116,7 +116,6 @@ namespace Image_vision {
             blue = 2;
             ROS_INFO("My are red!!");
         }
-
         if (msg.data == 4) {
             red = 2;
             blue = 1;
@@ -127,6 +126,7 @@ namespace Image_vision {
 
     void Descion_Machine::message(const arr_rank & msg) {
         // 先存储先前的排序 可能有用
+        ROS_INFO("asss");
         Last_Arr_And_Rank.arrs = msg.arrs;
         Last_Arr_And_Rank.rank = msg.rank;
         // 这里需要放出权限
@@ -177,6 +177,7 @@ namespace Image_vision {
         int Win = 0;
         int Redd = 0;
         int Bluee = 0;
+
         for (int i = 0; i <= 4; ++i) {
             if (arr.arrs[i].arr[0] == 3) {
                 for (int j = 1; j <= 3; ++j) {
@@ -193,6 +194,7 @@ namespace Image_vision {
                 Bluee = 0;
             }
         }
+
         // 简单累计 防止误判
         // 防止少识别了以为不是大胜状态
         if (Win >= 3) {
@@ -231,9 +233,13 @@ namespace Image_vision {
         if (Temp_rank_Mark > Mark_Treshold) {
             // 接上变量并入队列
             // 在要入队列之前需要先打印状态
+            trackerStateMachine.Set_Attack();
+            ROS_INFO("now state %s", trackerStateMachine.My_string_state().c_str());
             Deq.push_back(Basket_Attack(arr_rank_Mark));
         }
         else {
+            trackerStateMachine.Set_Defend();
+            ROS_INFO("now state %s", trackerStateMachine.My_string_state().c_str());
             Deq.push_back(Basket_Defend(arr_rank_Mark));
         }
         // 可以与那个逻辑一样取最近的 不过这样会出问题

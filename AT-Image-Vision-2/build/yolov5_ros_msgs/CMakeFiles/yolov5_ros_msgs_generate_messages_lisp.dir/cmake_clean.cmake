@@ -1,6 +1,7 @@
 file(REMOVE_RECURSE
   "/home/yami/AT-Image-Vision/AT-Image-Vision-2/devel/share/common-lisp/ros/yolov5_ros_msgs/msg/BoundingBox.lisp"
   "/home/yami/AT-Image-Vision/AT-Image-Vision-2/devel/share/common-lisp/ros/yolov5_ros_msgs/msg/BoundingBoxes.lisp"
+  "/home/yami/AT-Image-Vision/AT-Image-Vision-2/devel/share/common-lisp/ros/yolov5_ros_msgs/msg/M.lisp"
   "/home/yami/AT-Image-Vision/AT-Image-Vision-2/devel/share/common-lisp/ros/yolov5_ros_msgs/msg/X_Y_ARG.lisp"
   "/home/yami/AT-Image-Vision/AT-Image-Vision-2/devel/share/common-lisp/ros/yolov5_ros_msgs/msg/arr.lisp"
   "/home/yami/AT-Image-Vision/AT-Image-Vision-2/devel/share/common-lisp/ros/yolov5_ros_msgs/msg/arr_rank.lisp"

@@ -99,7 +99,6 @@
       "Header header
 Header image_header
 BoundingBox[] bounding_boxes
-
 ================================================================================
 MSG: std_msgs/Header
 # Standard metadata for higher-level stamped data types.
@@ -125,7 +124,6 @@ int64 xmax
 int64 ymax
 int16 num
 string Class
-
 ")
 
 

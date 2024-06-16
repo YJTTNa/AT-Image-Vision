@@ -28,6 +28,10 @@ if __name__ == '__main__':
             msg = 1
         elif key == 'B':
             msg = 2
+        elif key == 'C':
+            msg = 3
+        elif key == 'D':
+            msg = 4
         pub.publish(msg)
         rate.sleep()
 

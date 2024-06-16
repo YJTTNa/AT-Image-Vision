@@ -1,6 +1,7 @@
 file(REMOVE_RECURSE
   "/home/yami/AT-Image-Vision/AT-Image-Vision-2/devel/lib/python3/dist-packages/yolov5_ros_msgs/msg/_BoundingBox.py"
   "/home/yami/AT-Image-Vision/AT-Image-Vision-2/devel/lib/python3/dist-packages/yolov5_ros_msgs/msg/_BoundingBoxes.py"
+  "/home/yami/AT-Image-Vision/AT-Image-Vision-2/devel/lib/python3/dist-packages/yolov5_ros_msgs/msg/_M.py"
   "/home/yami/AT-Image-Vision/AT-Image-Vision-2/devel/lib/python3/dist-packages/yolov5_ros_msgs/msg/_X_Y_ARG.py"
   "/home/yami/AT-Image-Vision/AT-Image-Vision-2/devel/lib/python3/dist-packages/yolov5_ros_msgs/msg/__init__.py"
   "/home/yami/AT-Image-Vision/AT-Image-Vision-2/devel/lib/python3/dist-packages/yolov5_ros_msgs/msg/_arr.py"

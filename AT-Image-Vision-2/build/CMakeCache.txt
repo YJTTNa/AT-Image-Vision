@@ -639,16 +639,16 @@ yolov5_launch_BINARY_DIR:STATIC=/home/yami/AT-Image-Vision/AT-Image-Vision-2/bui
 yolov5_launch_SOURCE_DIR:STATIC=/home/yami/AT-Image-Vision/AT-Image-Vision-2/src/yolov5_launch
 
 //Value Computed by CMake
-yolov5_ros_BINARY_DIR:STATIC=/home/yami/AT-Image-Vision/AT-Image-Vision-2/build/yolov5_main
+yolov5_ros_BINARY_DIR:STATIC=/home/yami/AT-Image-Vision/AT-Image-Vision-2/build/yolov5_ros
 
 //Value Computed by CMake
-yolov5_ros_SOURCE_DIR:STATIC=/home/yami/AT-Image-Vision/AT-Image-Vision-2/src/yolov5_main
+yolov5_ros_SOURCE_DIR:STATIC=/home/yami/AT-Image-Vision/AT-Image-Vision-2/src/yolov5_ros
 
 //Value Computed by CMake
 yolov5_ros_msgs_BINARY_DIR:STATIC=/home/yami/AT-Image-Vision/AT-Image-Vision-2/build/yolov5_ros_msgs
 
 //The directory containing a CMake configuration file for yolov5_ros_msgs.
-yolov5_ros_msgs_DIR:PATH=/home/yami/AT-Image-Vision/AT-Image-Vision-2/devel/share/yolov5_ros_msgs/cmake
+yolov5_ros_msgs_DIR:PATH=/home/yami/AT-Image-Vision/AT-Image-Vision-2/devel_isolated/yolov5_ros_msgs/share/yolov5_ros_msgs/cmake
 
 //Value Computed by CMake
 yolov5_ros_msgs_SOURCE_DIR:STATIC=/home/yami/AT-Image-Vision/AT-Image-Vision-2/src/yolov5_ros_msgs

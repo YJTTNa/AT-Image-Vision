@@ -57,6 +57,7 @@ yolov5_ros_msgs/CMakeFiles/yolov5_ros_msgs_generate_messages_cpp: /home/yami/AT-
 yolov5_ros_msgs/CMakeFiles/yolov5_ros_msgs_generate_messages_cpp: /home/yami/AT-Image-Vision/AT-Image-Vision-2/devel/include/yolov5_ros_msgs/BoundingBoxes.h
 yolov5_ros_msgs/CMakeFiles/yolov5_ros_msgs_generate_messages_cpp: /home/yami/AT-Image-Vision/AT-Image-Vision-2/devel/include/yolov5_ros_msgs/port_serial.h
 yolov5_ros_msgs/CMakeFiles/yolov5_ros_msgs_generate_messages_cpp: /home/yami/AT-Image-Vision/AT-Image-Vision-2/devel/include/yolov5_ros_msgs/X_Y_ARG.h
+yolov5_ros_msgs/CMakeFiles/yolov5_ros_msgs_generate_messages_cpp: /home/yami/AT-Image-Vision/AT-Image-Vision-2/devel/include/yolov5_ros_msgs/M.h
 yolov5_ros_msgs/CMakeFiles/yolov5_ros_msgs_generate_messages_cpp: /home/yami/AT-Image-Vision/AT-Image-Vision-2/devel/include/yolov5_ros_msgs/arr.h
 yolov5_ros_msgs/CMakeFiles/yolov5_ros_msgs_generate_messages_cpp: /home/yami/AT-Image-Vision/AT-Image-Vision-2/devel/include/yolov5_ros_msgs/arr_rank.h
 
@@ -87,17 +88,23 @@ yolov5_ros_msgs/CMakeFiles/yolov5_ros_msgs_generate_messages_cpp: /home/yami/AT-
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/yami/AT-Image-Vision/AT-Image-Vision-2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Generating C++ code from yolov5_ros_msgs/X_Y_ARG.msg"
 	cd /home/yami/AT-Image-Vision/AT-Image-Vision-2/src/yolov5_ros_msgs && /home/yami/AT-Image-Vision/AT-Image-Vision-2/build/catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/yami/AT-Image-Vision/AT-Image-Vision-2/src/yolov5_ros_msgs/msg/X_Y_ARG.msg -Iyolov5_ros_msgs:/home/yami/AT-Image-Vision/AT-Image-Vision-2/src/yolov5_ros_msgs/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p yolov5_ros_msgs -o /home/yami/AT-Image-Vision/AT-Image-Vision-2/devel/include/yolov5_ros_msgs -e /opt/ros/noetic/share/gencpp/cmake/..
 
+/home/yami/AT-Image-Vision/AT-Image-Vision-2/devel/include/yolov5_ros_msgs/M.h: /opt/ros/noetic/lib/gencpp/gen_cpp.py
+/home/yami/AT-Image-Vision/AT-Image-Vision-2/devel/include/yolov5_ros_msgs/M.h: /home/yami/AT-Image-Vision/AT-Image-Vision-2/src/yolov5_ros_msgs/msg/M.msg
+/home/yami/AT-Image-Vision/AT-Image-Vision-2/devel/include/yolov5_ros_msgs/M.h: /opt/ros/noetic/share/gencpp/msg.h.template
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/yami/AT-Image-Vision/AT-Image-Vision-2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Generating C++ code from yolov5_ros_msgs/M.msg"
+	cd /home/yami/AT-Image-Vision/AT-Image-Vision-2/src/yolov5_ros_msgs && /home/yami/AT-Image-Vision/AT-Image-Vision-2/build/catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/yami/AT-Image-Vision/AT-Image-Vision-2/src/yolov5_ros_msgs/msg/M.msg -Iyolov5_ros_msgs:/home/yami/AT-Image-Vision/AT-Image-Vision-2/src/yolov5_ros_msgs/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p yolov5_ros_msgs -o /home/yami/AT-Image-Vision/AT-Image-Vision-2/devel/include/yolov5_ros_msgs -e /opt/ros/noetic/share/gencpp/cmake/..
+
 /home/yami/AT-Image-Vision/AT-Image-Vision-2/devel/include/yolov5_ros_msgs/arr.h: /opt/ros/noetic/lib/gencpp/gen_cpp.py
 /home/yami/AT-Image-Vision/AT-Image-Vision-2/devel/include/yolov5_ros_msgs/arr.h: /home/yami/AT-Image-Vision/AT-Image-Vision-2/src/yolov5_ros_msgs/msg/arr.msg
 /home/yami/AT-Image-Vision/AT-Image-Vision-2/devel/include/yolov5_ros_msgs/arr.h: /opt/ros/noetic/share/gencpp/msg.h.template
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/yami/AT-Image-Vision/AT-Image-Vision-2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Generating C++ code from yolov5_ros_msgs/arr.msg"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/yami/AT-Image-Vision/AT-Image-Vision-2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Generating C++ code from yolov5_ros_msgs/arr.msg"
 	cd /home/yami/AT-Image-Vision/AT-Image-Vision-2/src/yolov5_ros_msgs && /home/yami/AT-Image-Vision/AT-Image-Vision-2/build/catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/yami/AT-Image-Vision/AT-Image-Vision-2/src/yolov5_ros_msgs/msg/arr.msg -Iyolov5_ros_msgs:/home/yami/AT-Image-Vision/AT-Image-Vision-2/src/yolov5_ros_msgs/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p yolov5_ros_msgs -o /home/yami/AT-Image-Vision/AT-Image-Vision-2/devel/include/yolov5_ros_msgs -e /opt/ros/noetic/share/gencpp/cmake/..
 
 /home/yami/AT-Image-Vision/AT-Image-Vision-2/devel/include/yolov5_ros_msgs/arr_rank.h: /opt/ros/noetic/lib/gencpp/gen_cpp.py
 /home/yami/AT-Image-Vision/AT-Image-Vision-2/devel/include/yolov5_ros_msgs/arr_rank.h: /home/yami/AT-Image-Vision/AT-Image-Vision-2/src/yolov5_ros_msgs/msg/arr_rank.msg
 /home/yami/AT-Image-Vision/AT-Image-Vision-2/devel/include/yolov5_ros_msgs/arr_rank.h: /home/yami/AT-Image-Vision/AT-Image-Vision-2/src/yolov5_ros_msgs/msg/arr.msg
 /home/yami/AT-Image-Vision/AT-Image-Vision-2/devel/include/yolov5_ros_msgs/arr_rank.h: /opt/ros/noetic/share/gencpp/msg.h.template
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/yami/AT-Image-Vision/AT-Image-Vision-2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Generating C++ code from yolov5_ros_msgs/arr_rank.msg"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/yami/AT-Image-Vision/AT-Image-Vision-2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Generating C++ code from yolov5_ros_msgs/arr_rank.msg"
 	cd /home/yami/AT-Image-Vision/AT-Image-Vision-2/src/yolov5_ros_msgs && /home/yami/AT-Image-Vision/AT-Image-Vision-2/build/catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/yami/AT-Image-Vision/AT-Image-Vision-2/src/yolov5_ros_msgs/msg/arr_rank.msg -Iyolov5_ros_msgs:/home/yami/AT-Image-Vision/AT-Image-Vision-2/src/yolov5_ros_msgs/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p yolov5_ros_msgs -o /home/yami/AT-Image-Vision/AT-Image-Vision-2/devel/include/yolov5_ros_msgs -e /opt/ros/noetic/share/gencpp/cmake/..
 
 yolov5_ros_msgs_generate_messages_cpp: yolov5_ros_msgs/CMakeFiles/yolov5_ros_msgs_generate_messages_cpp
@@ -105,6 +112,7 @@ yolov5_ros_msgs_generate_messages_cpp: /home/yami/AT-Image-Vision/AT-Image-Visio
 yolov5_ros_msgs_generate_messages_cpp: /home/yami/AT-Image-Vision/AT-Image-Vision-2/devel/include/yolov5_ros_msgs/BoundingBoxes.h
 yolov5_ros_msgs_generate_messages_cpp: /home/yami/AT-Image-Vision/AT-Image-Vision-2/devel/include/yolov5_ros_msgs/port_serial.h
 yolov5_ros_msgs_generate_messages_cpp: /home/yami/AT-Image-Vision/AT-Image-Vision-2/devel/include/yolov5_ros_msgs/X_Y_ARG.h
+yolov5_ros_msgs_generate_messages_cpp: /home/yami/AT-Image-Vision/AT-Image-Vision-2/devel/include/yolov5_ros_msgs/M.h
 yolov5_ros_msgs_generate_messages_cpp: /home/yami/AT-Image-Vision/AT-Image-Vision-2/devel/include/yolov5_ros_msgs/arr.h
 yolov5_ros_msgs_generate_messages_cpp: /home/yami/AT-Image-Vision/AT-Image-Vision-2/devel/include/yolov5_ros_msgs/arr_rank.h
 yolov5_ros_msgs_generate_messages_cpp: yolov5_ros_msgs/CMakeFiles/yolov5_ros_msgs_generate_messages_cpp.dir/build.make

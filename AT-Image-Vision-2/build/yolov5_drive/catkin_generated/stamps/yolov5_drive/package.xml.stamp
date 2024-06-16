@@ -2,7 +2,7 @@
 <package format="2">
   <name>yolov5_drive</name>
   <version>0.0.0</version>
-  <description>The yolov5_test package</description>
+  <description>The yolov5_drive package</description>
 
   <!-- One maintainer tag required, multiple allowed, one person per tag -->
   <!-- Example:  -->

@@ -43,6 +43,7 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
     "/home/yami/AT-Image-Vision/AT-Image-Vision-2/src/yolov5_ros_msgs/msg/BoundingBoxes.msg"
     "/home/yami/AT-Image-Vision/AT-Image-Vision-2/src/yolov5_ros_msgs/msg/port_serial.msg"
     "/home/yami/AT-Image-Vision/AT-Image-Vision-2/src/yolov5_ros_msgs/msg/X_Y_ARG.msg"
+    "/home/yami/AT-Image-Vision/AT-Image-Vision-2/src/yolov5_ros_msgs/msg/M.msg"
     "/home/yami/AT-Image-Vision/AT-Image-Vision-2/src/yolov5_ros_msgs/msg/arr.msg"
     "/home/yami/AT-Image-Vision/AT-Image-Vision-2/src/yolov5_ros_msgs/msg/arr_rank.msg"
     )

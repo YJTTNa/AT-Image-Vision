@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.1.2)
+cmake_minimum_required(VERSION 3.0.2)
 project(yolov5_ros_msgs)
 
 
@@ -15,6 +15,7 @@ add_message_files(
         BoundingBoxes.msg
         port_serial.msg
         X_Y_ARG.msg
+        M.msg
         arr.msg 
         arr_rank.msg 
 )

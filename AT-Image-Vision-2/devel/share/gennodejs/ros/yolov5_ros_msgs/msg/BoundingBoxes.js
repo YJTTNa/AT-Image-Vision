@@ -105,7 +105,6 @@ class BoundingBoxes {
     Header header
     Header image_header
     BoundingBox[] bounding_boxes
-    
     ================================================================================
     MSG: std_msgs/Header
     # Standard metadata for higher-level stamped data types.
@@ -131,7 +130,6 @@ class BoundingBoxes {
     int64 ymax
     int16 num
     string Class
-    
     `;
   }
 

@@ -17,8 +17,7 @@ int64 ymin
 int64 xmax
 int64 ymax
 int16 num
-string Class
-"""
+string Class"""
   __slots__ = ['probability','xmin','ymin','xmax','ymax','num','Class']
   _slot_types = ['float64','int64','int64','int64','int64','int16','string']
 

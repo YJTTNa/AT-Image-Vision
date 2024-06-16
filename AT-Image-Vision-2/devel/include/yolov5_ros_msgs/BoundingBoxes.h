@@ -164,7 +164,6 @@ struct Definition< ::yolov5_ros_msgs::BoundingBoxes_<ContainerAllocator> >
     return "Header header\n"
 "Header image_header\n"
 "BoundingBox[] bounding_boxes\n"
-"\n"
 "================================================================================\n"
 "MSG: std_msgs/Header\n"
 "# Standard metadata for higher-level stamped data types.\n"

@@ -1,0 +1,8 @@
+prefix=/home/yami/AT-Image-Vision/AT-Image-Vision-2/devel_isolated/rosserial_self_launch
+
+Name: rosserial_self_launch
+Description: Description of rosserial_self_launch
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

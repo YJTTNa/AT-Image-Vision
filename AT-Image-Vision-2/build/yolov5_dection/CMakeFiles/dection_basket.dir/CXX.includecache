@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/yami/AT-Image-Vision/AT-Image-Vision-2/devel/include/yolov5_ros_msgs/BoundingBox.h
+/home/yami/AT-Image-Vision/AT-Image-Vision-2/devel_isolated/yolov5_ros_msgs/include/yolov5_ros_msgs/BoundingBox.h
 string
 -
 vector
@@ -22,7 +22,7 @@ ros/builtin_message_traits.h
 ros/message_operations.h
 -
 
-/home/yami/AT-Image-Vision/AT-Image-Vision-2/devel/include/yolov5_ros_msgs/BoundingBoxes.h
+/home/yami/AT-Image-Vision/AT-Image-Vision-2/devel_isolated/yolov5_ros_msgs/include/yolov5_ros_msgs/BoundingBoxes.h
 string
 -
 vector
@@ -44,7 +44,7 @@ std_msgs/Header.h
 yolov5_ros_msgs/BoundingBox.h
 -
 
-/home/yami/AT-Image-Vision/AT-Image-Vision-2/devel/include/yolov5_ros_msgs/arr.h
+/home/yami/AT-Image-Vision/AT-Image-Vision-2/devel_isolated/yolov5_ros_msgs/include/yolov5_ros_msgs/arr.h
 string
 -
 vector
@@ -60,7 +60,7 @@ ros/builtin_message_traits.h
 ros/message_operations.h
 -
 
-/home/yami/AT-Image-Vision/AT-Image-Vision-2/devel/include/yolov5_ros_msgs/arr_rank.h
+/home/yami/AT-Image-Vision/AT-Image-Vision-2/devel_isolated/yolov5_ros_msgs/include/yolov5_ros_msgs/arr_rank.h
 string
 -
 vector
@@ -97,6 +97,12 @@ algorithm
 /home/yami/AT-Image-Vision/AT-Image-Vision-2/src/yolov5_dection/src/dection_basket.cpp
 yolov5_dection/dection_basket.h
 /home/yami/AT-Image-Vision/AT-Image-Vision-2/src/yolov5_dection/src/yolov5_dection/dection_basket.h
+ros/ros.h
+-
+your_package/BoundingBoxes.h
+/home/yami/AT-Image-Vision/AT-Image-Vision-2/src/yolov5_dection/src/your_package/BoundingBoxes.h
+vector
+-
 
 /opt/ros/noetic/include/ros/advertise_options.h
 ros/forwards.h

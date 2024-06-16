@@ -1,8 +1,8 @@
 //*
 //**** yami 
 //*    6.7 18.40 2024
-#ifndef __My_Descion__
-#define __My_Descion__
+#ifndef __My_Descion_www__
+#define __My_Descion_www_
 
 #include "vector"
 #include "map"
@@ -43,7 +43,7 @@ namespace Image_vision {
                 if (data.size() == maxSize) data.pop_front();  
                 data.push_back(value);  
             }  
-            // 设置接口获取当前的实时大小  
+            // 外接size
             int size() const { return data.size(); }
             // 轮询里面出现次数最多的数据
             int Find_Multifrequency() const;
@@ -167,6 +167,7 @@ namespace Image_vision {
             int Anger = 0;
             int Docile = 10;
             int Re_Set = -1;
+            // 这里默认是-1
             int Mode = -1;
             int Send_num = 0;
             // 上一个使用消息

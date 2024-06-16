@@ -67,7 +67,7 @@ set(yolov5_ros_CONFIG_INCLUDED TRUE)
 
 # set variables for source/devel/install prefixes
 if("TRUE" STREQUAL "TRUE")
-  set(yolov5_ros_SOURCE_PREFIX /home/yami/AT-Image-Vision/AT-Image-Vision-2/src/yolov5_main)
+  set(yolov5_ros_SOURCE_PREFIX /home/yami/AT-Image-Vision/AT-Image-Vision-2/src/yolov5_ros)
   set(yolov5_ros_DEVEL_PREFIX /home/yami/AT-Image-Vision/AT-Image-Vision-2/devel)
   set(yolov5_ros_INSTALL_PREFIX "")
   set(yolov5_ros_PREFIX ${yolov5_ros_DEVEL_PREFIX})
@@ -110,7 +110,7 @@ if(NOT " " STREQUAL " ")
         message(FATAL_ERROR "Project 'yolov5_ros' specifies '${idir}' as an include dir, which is not found.  It does not exist in '${include}'.  ${_report}")
       endif()
     else()
-      message(FATAL_ERROR "Project 'yolov5_ros' specifies '${idir}' as an include dir, which is not found.  It does neither exist as an absolute directory nor in '/home/yami/AT-Image-Vision/AT-Image-Vision-2/src/yolov5_main/${idir}'.  ${_report}")
+      message(FATAL_ERROR "Project 'yolov5_ros' specifies '${idir}' as an include dir, which is not found.  It does neither exist as an absolute directory nor in '/home/yami/AT-Image-Vision/AT-Image-Vision-2/src/yolov5_ros/${idir}'.  ${_report}")
     endif()
     _list_append_unique(yolov5_ros_INCLUDE_DIRS ${include})
   endforeach()
@@ -154,7 +154,7 @@ foreach(library ${libraries})
     set(lib_path "")
     set(lib "${library}-NOTFOUND")
     # since the path where the library is found is returned we have to iterate over the paths manually
-    foreach(path /home/yami/AT-Image-Vision/AT-Image-Vision-2/devel/lib;/home/yami/AT-Image-Vision/AT-Image-Vision-2/devel/lib;/home/yami/realsense_ros/devel/lib;/opt/ros/noetic/lib)
+    foreach(path /home/yami/AT-Image-Vision/AT-Image-Vision-2/devel/lib;/home/yami/AT-Image-Vision/AT-Image-Vision-2/devel_isolated/yolov5_drive/lib;/home/yami/AT-Image-Vision/AT-Image-Vision-2/devel_isolated/yolov5_dection/lib;/home/yami/AT-Image-Vision/AT-Image-Vision-2/devel_isolated/yolov5_ros_msgs/lib;/home/yami/AT-Image-Vision/AT-Image-Vision-2/devel_isolated/yolov5_ros/lib;/home/yami/AT-Image-Vision/AT-Image-Vision-2/devel_isolated/yolov5_launch/lib;/home/yami/AT-Image-Vision/AT-Image-Vision-2/devel_isolated/rosserial_self_launch/lib;/home/yami/AT-Image-Vision/AT-Image-Vision-2/devel_isolated/realsense2_description/lib;/home/yami/AT-Image-Vision/AT-Image-Vision-2/devel_isolated/realsense2_camera/lib;/home/yami/AT-Image-Vision/AT-Image-Vision-2/devel/lib;/home/yami/realsense_ros/devel/lib;/opt/ros/noetic/lib)
       find_library(lib ${library}
         PATHS ${path}
         NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH)
