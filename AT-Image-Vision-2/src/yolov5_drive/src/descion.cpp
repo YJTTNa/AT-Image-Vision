@@ -38,8 +38,8 @@ namespace Image_vision {
         static ros::NodeHandle nh;
         static ros::Publisher message_pub = nh.advertise< port_serial >("basket_id", 10);
         static port_serial Bask_ID;
+        // 红蓝方错位问题从这里解决
         if (msg.x == 1) {
-            // 这个标志位的问题很大现在 
             red = 1;
             blue = 2;
             ROS_INFO("My are red!!");
@@ -70,6 +70,8 @@ namespace Image_vision {
             Send_num = Deq.Find_Multifrequency();
             if (Send_num == 0) {
                 // 这里是博弈代码
+                // 进入轮询发送检测模式
+                // 这里就体现了进入数据里就存的作用
                 ROS_INFO("%d", Send_num);
             }
             else {
@@ -257,15 +259,20 @@ namespace Image_vision {
         return 0;
     }
     //* Attack 进攻方为主(追求大胜) 速度 放到一定的球数
+    // 不要优先空框 
+    // 
     int Descion_Machine::Basket_Attack(const arr_rank arr_and_rank) {
-        for (int i = 0; i <= 4; ++i) {
-            if (arr_and_rank.arrs[arr_and_rank.rank[i] - 1].arr[0] == 2 && arr_and_rank.arrs[arr_and_rank.rank[i] - 1].arr[2] == blue) return i + 1;
-        }
         for (int i = 0; i <= 4; ++i) {
             if (arr_and_rank.arrs[arr_and_rank.rank[i] - 1].arr[0] == 2 && arr_and_rank.arrs[arr_and_rank.rank[i] - 1].arr[2] == red) return arr_and_rank.rank[i];
         }
         for (int i = 0; i <= 4; ++i) {
+            if (arr_and_rank.arrs[arr_and_rank.rank[i] - 1].arr[0] == 2 && arr_and_rank.arrs[arr_and_rank.rank[i] - 1].arr[2] == blue) return i + 1;
+        }
+        for (int i = 0; i <= 4; ++i) {
             if (arr_and_rank.arrs[arr_and_rank.rank[i] - 1].arr[0] == 1 && arr_and_rank.arrs[arr_and_rank.rank[i] - 1].arr[1] == red) return arr_and_rank.rank[i];
+        }
+        for (int i = 0; i <= 4; ++i) {
+            if (arr_and_rank.arrs[arr_and_rank.rank[i] - 1].arr[0] == 1 && arr_and_rank.arrs[arr_and_rank.rank[i] - 1].arr[1] == blue) return arr_and_rank.rank[i];
         }
         //* 这里还需要增加
         return 0;
