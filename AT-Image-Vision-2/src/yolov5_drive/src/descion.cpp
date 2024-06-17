@@ -114,11 +114,13 @@ namespace Image_vision {
         if (msg.data == 3) { 
             red = 1;
             blue = 2;
+            ROS_INFO("%d", blue);
             ROS_INFO("My are red!!");
         }
         if (msg.data == 4) {
             red = 2;
             blue = 1;
+            ROS_INFO("%d", blue);
             ROS_INFO("My are blue!!");
         }
     }
@@ -126,20 +128,24 @@ namespace Image_vision {
 
     void Descion_Machine::message(const arr_rank & msg) {
         // 存储当前的排序
+        // 这个可能会用到
+        // 后面
         Last_Arr_And_Rank.arrs = msg.arrs;
         Last_Arr_And_Rank.rank = msg.rank;
         if (Mode == 1) this->Lost_or_Win(msg);
     }
-    // 注意这个写法
+    // 空框是+0
+    // 如果是一个球 +2 -2
+    // 如果是两个球 
     int Descion_Machine::Mark(const arr_rank Mark_Arr_Rank) {
         int Mark = 0;
         for (int i = 0; i <= 4; ++i) {
             if (Mark_Arr_Rank.arrs[i].arr[0] == 0) Mark = Mark;
             else if (Mark_Arr_Rank.arrs[i].arr[0] == 1) Mark = Mark_Arr_Rank.arrs[i].arr[1]==red?Mark+2:Mark-2; 
             else if (Mark_Arr_Rank.arrs[i].arr[0] == 2) {
-                Mark = Mark_Arr_Rank.arrs[i].arr[1]==red?Mark+3:Mark-2;
+                Mark = Mark_Arr_Rank.arrs[i].arr[1]==red?Mark+3:Mark-3;
                 // 有且仅有对面非常慢 第一个球是对面 我们放第二个
-                Mark = Mark_Arr_Rank.arrs[i].arr[2]==red?Mark+4:Mark+6;
+                Mark = Mark_Arr_Rank.arrs[i].arr[2]==red?Mark+3:Mark+5;
             }
             else if (Mark_Arr_Rank.arrs[i].arr[0] == 3) {
                 // 关键
@@ -166,6 +172,8 @@ namespace Image_vision {
                 // 2. 红红蓝
                 // 3. 蓝蓝红
         }
+        // 这里的mark是累计了5个框的数值
+        ROS_INFO("%d", Mark);
         return Mark;
         // 用完Last_Mark 记得更新
     }
@@ -189,8 +197,8 @@ namespace Image_vision {
         // 简单累计 防止误判
         // 防止少识别了以为不是大胜状态
         if (Win >= 3) {
+            ROS_INFO("before state %s", trackerStateMachine.My_string_state().c_str());
             if (trackerStateMachine.Get_State() != TrackerStateMachine::State::WINNER && Lost_Winner_Num >= 3) {
-                ROS_INFO("before state %s", trackerStateMachine.My_string_state().c_str());
                 trackerStateMachine.Set_WINNER();
                 Lost_Winner_Num++;
                 ROS_INFO("now state %s", trackerStateMachine.My_string_state().c_str());
@@ -198,8 +206,8 @@ namespace Image_vision {
             else Lost_Winner_Num++;
         }
         else if (Lost >= 3) {
+            ROS_INFO("before state %s", trackerStateMachine.My_string_state().c_str());
             if (trackerStateMachine.Get_State() != TrackerStateMachine::State::FALSE && Lost_Winner_Num >= 3) {
-                ROS_INFO("before state %s", trackerStateMachine.My_string_state().c_str());
                 trackerStateMachine.Set_FALSE();
                 Lost_Winner_Num++;
                 ROS_INFO("now state %s", trackerStateMachine.My_string_state().c_str());
@@ -227,16 +235,16 @@ namespace Image_vision {
         if (Temp_rank_Mark > Mark_Treshold) {
             // 接上变量并入队列
             // 在要入队列之前需要先打印状态
+            ROS_INFO("before state %s", trackerStateMachine.My_string_state().c_str());
             if (trackerStateMachine.Get_State() != TrackerStateMachine::State::ATTACK) {
-                ROS_INFO("before state %s", trackerStateMachine.My_string_state().c_str());
                 trackerStateMachine.Set_Attack();
                 ROS_INFO("now state %s", trackerStateMachine.My_string_state().c_str());
             }
             Deq.push_back(Basket_Attack(arr_rank_Mark));
         }
         else {
+            ROS_INFO("before state %s", trackerStateMachine.My_string_state().c_str());
             if (trackerStateMachine.Get_State() != TrackerStateMachine::State::DEFEND) {
-                ROS_INFO("before state %s", trackerStateMachine.My_string_state().c_str());
                 trackerStateMachine.Set_Defend();
                 ROS_INFO("now state %s", trackerStateMachine.My_string_state().c_str());
             }
@@ -252,6 +260,7 @@ namespace Image_vision {
         }
         // 这里是空框的情况
         for (int i = 0; i <= 4; ++i) {
+                        ROS_INFO("aa");
             if (arr_and_rank.arrs[arr_and_rank.rank[i] - 1].arr[0] == 0) return arr_and_rank.rank[i];
         }
         // 这里是两个球的情况
@@ -265,15 +274,15 @@ namespace Image_vision {
         return 0;
     }
     //* Attack 进攻方为主(追求大胜) 速度 放到一定的球数
-    // 不要优先空框 
-    // 
     int Descion_Machine::Basket_Attack(const arr_rank arr_and_rank) {
+        //
         for (int i = 0; i <= 4; ++i) {
             if (arr_and_rank.arrs[arr_and_rank.rank[i] - 1].arr[0] == 2 && arr_and_rank.arrs[arr_and_rank.rank[i] - 1].arr[2] == red) return arr_and_rank.rank[i];
         }
         for (int i = 0; i <= 4; ++i) {
             if (arr_and_rank.arrs[arr_and_rank.rank[i] - 1].arr[0] == 2 && arr_and_rank.arrs[arr_and_rank.rank[i] - 1].arr[2] == blue) return i + 1;
         }
+
         for (int i = 0; i <= 4; ++i) {
             if (arr_and_rank.arrs[arr_and_rank.rank[i] - 1].arr[0] == 1 && arr_and_rank.arrs[arr_and_rank.rank[i] - 1].arr[1] == red) return arr_and_rank.rank[i];
         }

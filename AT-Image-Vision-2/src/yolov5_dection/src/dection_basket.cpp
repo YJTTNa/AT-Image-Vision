@@ -65,6 +65,8 @@ namespace Image_vision {
                 static ros::NodeHandle nh;
                 static ros::Publisher pub_Arr_Rank = nh.advertise< arr_rank >("My_arr_rank", 10);
                 // 每处理好一张都会发出去
+                // for (int i = 0; i < 4; ++i) ROS_INFO("%d", pub_arr_rank.arrs[4].arr[i]);
+                // ROS_INFO("7877");
                 pub_Arr_Rank.publish(pub_arr_rank);
             }
         basket.clear();
