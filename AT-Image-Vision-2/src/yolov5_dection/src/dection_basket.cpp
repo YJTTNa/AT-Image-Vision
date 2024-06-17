@@ -28,7 +28,6 @@ namespace Image_vision {
                 if (msg.bounding_boxes[i].Class == "basket") Temp_basket++;
                 // 这里需要考虑与那个节点的交互性问题
             if (Temp_basket == 5 && Mode == 1) {
-                ROS_INFO("BBBBBBBBBBBBBB");
                 for (int i = 0; i < num_thing; ++i) 
                     if (msg.bounding_boxes[i].Class == "basket") basket.push_back(msg.bounding_boxes[i]);
                 std::sort(basket.begin(), basket.end(), My_dection::Bas_Compare);

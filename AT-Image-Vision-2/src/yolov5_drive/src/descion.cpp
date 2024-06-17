@@ -98,7 +98,7 @@ namespace Image_vision {
                 Re_Set = 1;
             }
             Mode = msg.data;
-            ROS_INFO("2 puls");
+            ROS_INFO("now mode 2");
             Send_num = Deq.Find_Multifrequency();
             //Send_num = Deq.Find_Multifrequency();
             if (Send_num == 0) {
@@ -125,11 +125,9 @@ namespace Image_vision {
     // 考虑 瞎放的学校的处理办法
 
     void Descion_Machine::message(const arr_rank & msg) {
-        // 先存储先前的排序 可能有用
-        ROS_INFO("asss");
+        // 存储当前的排序
         Last_Arr_And_Rank.arrs = msg.arrs;
         Last_Arr_And_Rank.rank = msg.rank;
-        // 这里需要放出权限
         if (Mode == 1) this->Lost_or_Win(msg);
     }
     // 注意这个写法
@@ -171,48 +169,45 @@ namespace Image_vision {
         return Mark;
         // 用完Last_Mark 记得更新
     }
-    // 封装输赢函数
+
     void Descion_Machine::Lost_or_Win(const arr_rank arr) {
         int Lost = 0;
         int Win = 0;
         int Redd = 0;
         int Bluee = 0;
-
         for (int i = 0; i <= 4; ++i) {
             if (arr.arrs[i].arr[0] == 3) {
                 for (int j = 1; j <= 3; ++j) {
-                    if (arr.arrs[i].arr[j] == red) 
-                        Redd++;
-                    else 
-                        Bluee++;
+                    if (arr.arrs[i].arr[j] == red) Redd++;
+                    else Bluee++;
                 }
-                if (Bluee > Redd)
-                    Lost++;
-                else 
-                    Win++;
-                Redd = 0;
-                Bluee = 0;
+                if (Bluee > Redd) Lost++;
+                else Win++;
+                Redd = 0; Bluee = 0;
             }
         }
-
         // 简单累计 防止误判
         // 防止少识别了以为不是大胜状态
         if (Win >= 3) {
-            ROS_INFO("before state %s", trackerStateMachine.My_string_state().c_str());
-            if (Lost_Winner_Num >= 5) trackerStateMachine.Set_WINNER();
-            Lost_Winner_Num++;
-            ROS_INFO("now state %s", trackerStateMachine.My_string_state().c_str());
+            if (trackerStateMachine.Get_State() != TrackerStateMachine::State::WINNER && Lost_Winner_Num >= 3) {
+                ROS_INFO("before state %s", trackerStateMachine.My_string_state().c_str());
+                trackerStateMachine.Set_WINNER();
+                Lost_Winner_Num++;
+                ROS_INFO("now state %s", trackerStateMachine.My_string_state().c_str());
+            }
+            else Lost_Winner_Num++;
         }
         else if (Lost >= 3) {
-            ROS_INFO("before state %s", trackerStateMachine.My_string_state().c_str());
-            if (Lost_Winner_Num >= 5) trackerStateMachine.Set_FALSE();
-            Lost_Winner_Num++;
-            ROS_INFO("now state %s", trackerStateMachine.My_string_state().c_str());
+            if (trackerStateMachine.Get_State() != TrackerStateMachine::State::FALSE && Lost_Winner_Num >= 3) {
+                ROS_INFO("before state %s", trackerStateMachine.My_string_state().c_str());
+                trackerStateMachine.Set_FALSE();
+                Lost_Winner_Num++;
+                ROS_INFO("now state %s", trackerStateMachine.My_string_state().c_str());
+            }
+            else Lost_Winner_Num++;
         }
         else {
             // 防止少识别以为不是大胜
-            // 调用别的函数 跑一个按梯度降值
-            ROS_INFO("before state %s", trackerStateMachine.My_string_state().c_str());
             if (Lost_Winner_Num > 10) Lost_Winner_Num = 5;
             else if (Lost_Winner_Num >= 5) {
                 Lost_Winner_Num = 2;
@@ -222,7 +217,6 @@ namespace Image_vision {
                 Lost_Winner_Num = 0;
                 this->Docile_Anger(arr);
             }
-            
         }
     }
 
@@ -233,13 +227,19 @@ namespace Image_vision {
         if (Temp_rank_Mark > Mark_Treshold) {
             // 接上变量并入队列
             // 在要入队列之前需要先打印状态
-            trackerStateMachine.Set_Attack();
-            ROS_INFO("now state %s", trackerStateMachine.My_string_state().c_str());
+            if (trackerStateMachine.Get_State() != TrackerStateMachine::State::ATTACK) {
+                ROS_INFO("before state %s", trackerStateMachine.My_string_state().c_str());
+                trackerStateMachine.Set_Attack();
+                ROS_INFO("now state %s", trackerStateMachine.My_string_state().c_str());
+            }
             Deq.push_back(Basket_Attack(arr_rank_Mark));
         }
         else {
-            trackerStateMachine.Set_Defend();
-            ROS_INFO("now state %s", trackerStateMachine.My_string_state().c_str());
+            if (trackerStateMachine.Get_State() != TrackerStateMachine::State::DEFEND) {
+                ROS_INFO("before state %s", trackerStateMachine.My_string_state().c_str());
+                trackerStateMachine.Set_Defend();
+                ROS_INFO("now state %s", trackerStateMachine.My_string_state().c_str());
+            }
             Deq.push_back(Basket_Defend(arr_rank_Mark));
         }
         // 可以与那个逻辑一样取最近的 不过这样会出问题

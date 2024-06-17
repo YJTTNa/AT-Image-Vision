@@ -28,5 +28,5 @@
   </node>
   
   <node pkg="yolov5_dection" type="dection_basket" name="dection_basket" output="screen"/>
-  <!-- <node pkg="yolov5_drive" type="descion" name="descion" output="screen"/> -->
+  <node pkg="yolov5_drive" type="descion" name="descion" output="screen"/> 
  </launch>
