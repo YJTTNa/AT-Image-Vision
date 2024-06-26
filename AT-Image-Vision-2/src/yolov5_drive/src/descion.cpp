@@ -65,7 +65,8 @@ namespace Image_vision {
                 Re_Set = 1;
             }
             ROS_INFO("2 puls");
-            Send_num = Deq.Find_Multifrequency();
+            if (Deq.size() == 0) Send_num = rand() % 5;
+            else Send_num = Deq.Find_Multifrequency();
             if (Send_num == 0) {
                 // 这里是博弈代码
                 // 进入轮询发送检测模式
@@ -137,15 +138,15 @@ namespace Image_vision {
     // 空框是+0
     // 如果是一个球 +2 -2
     // 如果是两个球 
+    // 如果是三个球的情况 
     int Descion_Machine::Mark(const arr_rank Mark_Arr_Rank) {
         int Mark = 0;
         for (int i = 0; i <= 4; ++i) {
             if (Mark_Arr_Rank.arrs[i].arr[0] == 0) Mark = Mark;
             else if (Mark_Arr_Rank.arrs[i].arr[0] == 1) Mark = Mark_Arr_Rank.arrs[i].arr[1]==red?Mark+2:Mark-2; 
             else if (Mark_Arr_Rank.arrs[i].arr[0] == 2) {
-                Mark = Mark_Arr_Rank.arrs[i].arr[1]==red?Mark+3:Mark-3;
-                // 有且仅有对面非常慢 第一个球是对面 我们放第二个
-                Mark = Mark_Arr_Rank.arrs[i].arr[2]==red?Mark+3:Mark+5;
+                if (Mark_Arr_Rank.arrs[i].arr[1] != Mark_Arr_Rank.arrs[i].arr[2]) Mark = Mark_Arr_Rank.arrs[i].arr[1]==red?Mark+3:Mark+4;
+                else Mark = Mark_Arr_Rank.arrs[i].arr[2]==red?Mark+3:Mark-3;
             }
             else if (Mark_Arr_Rank.arrs[i].arr[0] == 3) {
                 // 关键
@@ -173,7 +174,6 @@ namespace Image_vision {
                 // 3. 蓝蓝红
         }
         // 这里的mark是累计了5个框的数值
-        ROS_INFO("%d", Mark);
         return Mark;
         // 用完Last_Mark 记得更新
     }
@@ -216,7 +216,7 @@ namespace Image_vision {
         }
         else {
             // 防止少识别以为不是大胜
-            if (Lost_Winner_Num > 10) Lost_Winner_Num = 5;
+            if (Lost_Winner_Num > 10) Lost_Winner_Num -= 5;
             else if (Lost_Winner_Num >= 5) {
                 Lost_Winner_Num = 2;
                 this->Docile_Anger(arr);
@@ -250,22 +250,19 @@ namespace Image_vision {
             }
             Deq.push_back(Basket_Defend(arr_rank_Mark));
         }
-        // 可以与那个逻辑一样取最近的 不过这样会出问题
-        // 所以建立容器 
     }
     //* Defend 防止对面大胜 
     int Descion_Machine::Basket_Defend(const arr_rank arr_and_rank) {
         for (int i = 0; i <= 4; ++i) {
             if (arr_and_rank.arrs[i].arr[0] == 2 && arr_and_rank.arrs[i].arr[2] == blue) return i + 1;
         }
-        // 这里是空框的情况
-        for (int i = 0; i <= 4; ++i) {
-                        ROS_INFO("aa");
-            if (arr_and_rank.arrs[arr_and_rank.rank[i] - 1].arr[0] == 0) return arr_and_rank.rank[i];
-        }
         // 这里是两个球的情况
         for (int i = 0; i <= 4; ++i) {
             if (arr_and_rank.arrs[arr_and_rank.rank[i] - 1].arr[0] == 2) return arr_and_rank.rank[i];
+        }
+        // 这里是空框的情况
+        for (int i = 0; i <= 4; ++i) {
+            if (arr_and_rank.arrs[arr_and_rank.rank[i] - 1].arr[0] == 0) return arr_and_rank.rank[i];
         }
         // 这里补充的情况
         for (int i = 0; i <= 4; ++i) {
@@ -275,24 +272,33 @@ namespace Image_vision {
     }
     //* Attack 进攻方为主(追求大胜) 速度 放到一定的球数
     int Descion_Machine::Basket_Attack(const arr_rank arr_and_rank) {
-        //
+        // 2个且不相同
         for (int i = 0; i <= 4; ++i) {
-            if (arr_and_rank.arrs[arr_and_rank.rank[i] - 1].arr[0] == 2 && arr_and_rank.arrs[arr_and_rank.rank[i] - 1].arr[2] == red) return arr_and_rank.rank[i];
+            if (arr_and_rank.arrs[arr_and_rank.rank[i] - 1].arr[0] == 2 && (arr_and_rank.arrs[arr_and_rank.rank[i] - 1].arr[2] != arr_and_rank.arrs[arr_and_rank.rank[i] - 1].arr[1])) 
+                return arr_and_rank.rank[i];
         }
+        // 2个优先我方
         for (int i = 0; i <= 4; ++i) {
-            if (arr_and_rank.arrs[arr_and_rank.rank[i] - 1].arr[0] == 2 && arr_and_rank.arrs[arr_and_rank.rank[i] - 1].arr[2] == blue) return i + 1;
+            if (arr_and_rank.arrs[arr_and_rank.rank[i] - 1].arr[0] == 2 && arr_and_rank.arrs[arr_and_rank.rank[i] - 1].arr[2] == red) 
+                return arr_and_rank.rank[i];
         }
-
+        // 其次是他们的
+        for (int i = 0; i <= 4; ++i) {
+            if (arr_and_rank.arrs[arr_and_rank.rank[i] - 1].arr[0] == 2 && arr_and_rank.arrs[arr_and_rank.rank[i] - 1].arr[2] == blue) 
+                return arr_and_rank.rank[i];
+        }
         for (int i = 0; i <= 4; ++i) {
             if (arr_and_rank.arrs[arr_and_rank.rank[i] - 1].arr[0] == 1 && arr_and_rank.arrs[arr_and_rank.rank[i] - 1].arr[1] == red) return arr_and_rank.rank[i];
         }
         for (int i = 0; i <= 4; ++i) {
+            if (arr_and_rank.arrs[arr_and_rank.rank[i] - 1].arr[0] == 0) return arr_and_rank.rank[i];
+        }
+        for (int i = 0; i <= 4; ++i) {
             if (arr_and_rank.arrs[arr_and_rank.rank[i] - 1].arr[0] == 1 && arr_and_rank.arrs[arr_and_rank.rank[i] - 1].arr[1] == blue) return arr_and_rank.rank[i];
         }
-        //* 这里还需要增加
+        // 总上说明进攻状态下不会进入博弈
         return 0;
     }
-
 
     // 这个属于新写的容器  
     int Fixed_Deque::Find_Multifrequency() const {

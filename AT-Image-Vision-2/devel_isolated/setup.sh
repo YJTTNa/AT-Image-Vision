@@ -6,4 +6,4 @@ if [ ! -z "$_CATKIN_SETUP_DIR" ] && [ "$_CATKIN_SETUP_DIR" != "/home/yami/AT-Ima
   return 1
 fi
 
-_CATKIN_SETUP_DIR= . "/home/yami/AT-Image-Vision/AT-Image-Vision-2/devel_isolated/yolov5_drive/setup.sh"
+_CATKIN_SETUP_DIR= . "/home/yami/AT-Image-Vision/AT-Image-Vision-2/devel_isolated/yolov5_timer/setup.sh"

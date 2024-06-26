@@ -7,8 +7,3 @@
 # new environment variables
 
 # modified environment variables
-export CMAKE_PREFIX_PATH="/home/yami/AT-Image-Vision/AT-Image-Vision-2/devel_isolated/yolov5_drive:$CMAKE_PREFIX_PATH"
-export LD_LIBRARY_PATH="/home/yami/AT-Image-Vision/AT-Image-Vision-2/devel_isolated/yolov5_drive/lib:$LD_LIBRARY_PATH"
-export PKG_CONFIG_PATH="/home/yami/AT-Image-Vision/AT-Image-Vision-2/devel_isolated/yolov5_drive/lib/pkgconfig:$PKG_CONFIG_PATH"
-export ROSLISP_PACKAGE_DIRECTORIES="/home/yami/AT-Image-Vision/AT-Image-Vision-2/devel_isolated/yolov5_drive/share/common-lisp:$ROSLISP_PACKAGE_DIRECTORIES"
-export ROS_PACKAGE_PATH="/home/yami/AT-Image-Vision/AT-Image-Vision-2/src/yolov5_drive:$ROS_PACKAGE_PATH"

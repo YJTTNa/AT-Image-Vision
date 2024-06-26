@@ -12,7 +12,7 @@ try:
     from catkin.environment_cache import generate_environment_script
 except ImportError:
     # search for catkin package in all workspaces and prepend to path
-    for workspace in '/home/yami/AT-Image-Vision/AT-Image-Vision-2/devel;/home/yami/realsense_ros/devel;/opt/ros/noetic'.split(';'):
+    for workspace in '/home/yami/AT-Image-Vision/AT-Image-Vision-2/devel_isolated/yolov5_drive;/home/yami/AT-Image-Vision/AT-Image-Vision-2/devel_isolated/yolov5_dection;/home/yami/AT-Image-Vision/AT-Image-Vision-2/devel_isolated/yolov5_ros_msgs;/home/yami/AT-Image-Vision/AT-Image-Vision-2/devel_isolated/yolov5_ros;/home/yami/AT-Image-Vision/AT-Image-Vision-2/devel_isolated/yolov5_launch;/home/yami/AT-Image-Vision/AT-Image-Vision-2/devel_isolated/rosserial_self_launch;/home/yami/AT-Image-Vision/AT-Image-Vision-2/devel_isolated/realsense2_description;/home/yami/AT-Image-Vision/AT-Image-Vision-2/devel_isolated/realsense2_camera;/home/yami/AT-Image-Vision/AT-Image-Vision-2/devel;/home/yami/realsense_ros/devel;/opt/ros/noetic'.split(';'):
         python_path = os.path.join(workspace, 'lib/python3/dist-packages')
         if os.path.isdir(os.path.join(python_path, 'catkin')):
             sys.path.insert(0, python_path)

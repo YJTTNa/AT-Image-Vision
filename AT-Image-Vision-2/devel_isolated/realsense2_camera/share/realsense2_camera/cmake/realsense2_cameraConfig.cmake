@@ -154,7 +154,7 @@ foreach(library ${libraries})
     set(lib_path "")
     set(lib "${library}-NOTFOUND")
     # since the path where the library is found is returned we have to iterate over the paths manually
-    foreach(path /home/yami/AT-Image-Vision/AT-Image-Vision-2/devel_isolated/realsense2_camera/lib;/home/yami/AT-Image-Vision/AT-Image-Vision-2/devel/lib;/home/yami/realsense_ros/devel/lib;/opt/ros/noetic/lib)
+    foreach(path /home/yami/AT-Image-Vision/AT-Image-Vision-2/devel_isolated/realsense2_camera/lib;/home/yami/AT-Image-Vision/AT-Image-Vision-2/devel_isolated/yolov5_drive/lib;/home/yami/AT-Image-Vision/AT-Image-Vision-2/devel_isolated/yolov5_dection/lib;/home/yami/AT-Image-Vision/AT-Image-Vision-2/devel_isolated/yolov5_ros_msgs/lib;/home/yami/AT-Image-Vision/AT-Image-Vision-2/devel_isolated/yolov5_ros/lib;/home/yami/AT-Image-Vision/AT-Image-Vision-2/devel_isolated/yolov5_launch/lib;/home/yami/AT-Image-Vision/AT-Image-Vision-2/devel_isolated/rosserial_self_launch/lib;/home/yami/AT-Image-Vision/AT-Image-Vision-2/devel_isolated/realsense2_description/lib;/home/yami/AT-Image-Vision/AT-Image-Vision-2/devel_isolated/realsense2_camera/lib;/home/yami/AT-Image-Vision/AT-Image-Vision-2/devel/lib;/home/yami/realsense_ros/devel/lib;/opt/ros/noetic/lib)
       find_library(lib ${library}
         PATHS ${path}
         NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH)

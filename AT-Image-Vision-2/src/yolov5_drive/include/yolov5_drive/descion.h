@@ -34,10 +34,11 @@ namespace Image_vision {
     //* 状态的转换 
     std::unordered_set<int> My_set;
     std::unordered_map<int, int> My_map;  
+
     class Fixed_Deque {   
         public:
             // 初始化方法( Fixed_Deque deque( 5 ) )
-            Fixed_Deque(int size) : maxSize(size) {}
+            explicit Fixed_Deque(int size) : maxSize(size) {}
             // 重写push_back() 函数  
             void push_back(int value) {  
                 if (data.size() == maxSize) data.pop_front();  
@@ -45,13 +46,14 @@ namespace Image_vision {
             }  
             // 外接size
             int size() const { return data.size(); }
-            // 轮询里面出现次数最多的数据
+            // 返回里面出现次数最多的数据
             int Find_Multifrequency() const;
         private:  
             std::deque<int> data;  
             int maxSize; 
           
     };  
+
     class TrackerStateMachine {
         public:
             // 默认是int类型
@@ -69,6 +71,7 @@ namespace Image_vision {
 
             [[nodiscard]] inline State Get_State() const { return state; }
 
+            // 访问最好加上this
             inline void Set_Attack() { this->state = State::ATTACK; }
             inline void Set_Defend() { this->state = State::DEFEND; }
             inline void Set_Game() { this->state = State::GAME; }
@@ -127,16 +130,11 @@ namespace Image_vision {
              * @param arr_rank arr_rank
              * @return int Mark this Situation
              */
+            int Mark(const arr_rank Mark_Arr_Rank); 
             void TD_location(const X_Y_ARG & msg);
             void Key_location(const Int32 & msg);
-            int Mark(const arr_rank Mark_Arr_Rank);   
             int Basket_Attack(const arr_rank arr_and_rank);
             int Basket_Defend(const arr_rank arr_and_rank);
-            /**
-             * @brief how_to_change_state
-             * @param pchMessage basket_ball now_state
-             * @return void
-             */
             // 累计上一次的数据次数
             // 判断当前框里球的数量
             // 定义变量来累加 上述决策
@@ -175,7 +173,7 @@ namespace Image_vision {
             int Now_Mark;
             int Last_Mark;
             // 这里是Mark的阈值
-            int Mark_Treshold = 10;
+            int Mark_Treshold = 6;
     };
 }
 

@@ -268,7 +268,7 @@ if __name__ == '__main__':
 
         if not args.local:
             # environment at generation time
-            CMAKE_PREFIX_PATH = r'/home/yami/AT-Image-Vision/AT-Image-Vision-2/devel_isolated/yolov5_ros;/home/yami/AT-Image-Vision/AT-Image-Vision-2/devel_isolated/yolov5_launch;/home/yami/AT-Image-Vision/AT-Image-Vision-2/devel_isolated/rosserial_self_launch;/home/yami/AT-Image-Vision/AT-Image-Vision-2/devel_isolated/realsense2_description;/home/yami/AT-Image-Vision/AT-Image-Vision-2/devel_isolated/realsense2_camera;/home/yami/AT-Image-Vision/AT-Image-Vision-2/devel;/home/yami/realsense_ros/devel;/opt/ros/noetic'.split(';')
+            CMAKE_PREFIX_PATH = r'/home/yami/AT-Image-Vision/AT-Image-Vision-2/devel_isolated/yolov5_drive;/home/yami/AT-Image-Vision/AT-Image-Vision-2/devel_isolated/yolov5_dection;/home/yami/AT-Image-Vision/AT-Image-Vision-2/devel_isolated/yolov5_ros_msgs;/home/yami/AT-Image-Vision/AT-Image-Vision-2/devel_isolated/yolov5_ros;/home/yami/AT-Image-Vision/AT-Image-Vision-2/devel_isolated/yolov5_launch;/home/yami/AT-Image-Vision/AT-Image-Vision-2/devel_isolated/rosserial_self_launch;/home/yami/AT-Image-Vision/AT-Image-Vision-2/devel_isolated/realsense2_description;/home/yami/AT-Image-Vision/AT-Image-Vision-2/devel_isolated/realsense2_camera;/home/yami/AT-Image-Vision/AT-Image-Vision-2/devel;/home/yami/realsense_ros/devel;/opt/ros/noetic'.split(';')
         else:
             # don't consider any other prefix path than this one
             CMAKE_PREFIX_PATH = []

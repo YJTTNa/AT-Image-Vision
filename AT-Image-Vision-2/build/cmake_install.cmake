@@ -139,6 +139,7 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   include("/home/yami/AT-Image-Vision/AT-Image-Vision-2/build/yolov5_ros_msgs/cmake_install.cmake")
   include("/home/yami/AT-Image-Vision/AT-Image-Vision-2/build/yolov5_dection/cmake_install.cmake")
   include("/home/yami/AT-Image-Vision/AT-Image-Vision-2/build/yolov5_drive/cmake_install.cmake")
+  include("/home/yami/AT-Image-Vision/AT-Image-Vision-2/build/yolov5_timer/cmake_install.cmake")
 
 endif()
 

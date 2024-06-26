@@ -50,6 +50,7 @@ class Yolo_Dect:
         cv2.waitKey(3)
     def dectshow(self, img, boxs):
         count = 0
+        basket = 0
         for box in boxs: 
             boundingBox = BoundingBox()
             boundingBox.probability =np.float64(box[4])
@@ -73,6 +74,8 @@ class Yolo_Dect:
 
             if box[-1] == 'basket' or ( box[-1] != 'basket' and 1.2 * (np.int64(box[2]) - np.int64(box[0])) > (np.int64(box[3]) - np.int64(box[1])) ):
                 count += 1
+                if box[-1] == 'basket':
+                    basket += 1
                 cv2.putText(img, box[-1],
                             (int(box[0]), int(text_pos_y)-10), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 255), 2, cv2.LINE_AA)
                 boundingBox.num = np.int16(count)

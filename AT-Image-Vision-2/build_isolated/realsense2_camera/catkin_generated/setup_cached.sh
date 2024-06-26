@@ -7,7 +7,5 @@
 # new environment variables
 
 # modified environment variables
-export CMAKE_PREFIX_PATH="/home/yami/AT-Image-Vision/AT-Image-Vision-2/devel_isolated/realsense2_camera:$CMAKE_PREFIX_PATH"
+export PATH='/opt/ros/noetic/bin:/home/yami/anaconda3/envs/yolo/bin:/home/yami/.local/bin:/usr/local/KdrobotCppLibs/bin/Release:/home/yame/anaconda3/bin:/home/yami/anaconda3/condabin:/opt/pycharm-2023.1.2/bin:/opt/pycharm-2023.1.2/bin:/home/yami/.cargo/bin:/home/yami/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/local/go/bin:/usr/local/go/bin'
 export PWD='/home/yami/AT-Image-Vision/AT-Image-Vision-2/build_isolated/realsense2_camera'
-export ROSLISP_PACKAGE_DIRECTORIES="/home/yami/AT-Image-Vision/AT-Image-Vision-2/devel_isolated/realsense2_camera/share/common-lisp:$ROSLISP_PACKAGE_DIRECTORIES"
-export ROS_PACKAGE_PATH="/home/yami/AT-Image-Vision/AT-Image-Vision-2/src/realsense_ros/realsense2_camera:$ROS_PACKAGE_PATH"

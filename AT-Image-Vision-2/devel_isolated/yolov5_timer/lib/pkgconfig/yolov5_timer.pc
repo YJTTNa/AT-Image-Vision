@@ -1,0 +1,8 @@
+prefix=/home/yami/AT-Image-Vision/AT-Image-Vision-2/devel_isolated/yolov5_timer
+
+Name: yolov5_timer
+Description: Description of yolov5_timer
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

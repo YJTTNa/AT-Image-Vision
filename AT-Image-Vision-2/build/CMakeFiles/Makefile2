@@ -62,6 +62,7 @@ all: yolov5_ros/all
 all: yolov5_ros_msgs/all
 all: yolov5_dection/all
 all: yolov5_drive/all
+all: yolov5_timer/all
 
 .PHONY : all
 
@@ -75,6 +76,7 @@ preinstall: yolov5_ros/preinstall
 preinstall: yolov5_ros_msgs/preinstall
 preinstall: yolov5_dection/preinstall
 preinstall: yolov5_drive/preinstall
+preinstall: yolov5_timer/preinstall
 
 .PHONY : preinstall
 
@@ -93,6 +95,7 @@ clean: yolov5_ros/clean
 clean: yolov5_ros_msgs/clean
 clean: yolov5_dection/clean
 clean: yolov5_drive/clean
+clean: yolov5_timer/clean
 
 .PHONY : clean
 
@@ -413,6 +416,24 @@ yolov5_ros_msgs/clean: yolov5_ros_msgs/CMakeFiles/yolov5_ros_msgs_gennodejs.dir/
 yolov5_ros_msgs/clean: yolov5_ros_msgs/CMakeFiles/yolov5_ros_msgs_generate_messages_lisp.dir/clean
 
 .PHONY : yolov5_ros_msgs/clean
+
+#=============================================================================
+# Directory level rules for directory yolov5_timer
+
+# Recursive "all" directory target.
+yolov5_timer/all:
+
+.PHONY : yolov5_timer/all
+
+# Recursive "preinstall" directory target.
+yolov5_timer/preinstall:
+
+.PHONY : yolov5_timer/preinstall
+
+# Recursive "clean" directory target.
+yolov5_timer/clean:
+
+.PHONY : yolov5_timer/clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/doxygen.dir

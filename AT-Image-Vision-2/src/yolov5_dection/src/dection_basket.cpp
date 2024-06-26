@@ -12,7 +12,6 @@ namespace Image_vision {
     //         message_sub = sh.subscribe("/yolov5/BoundingBoxes" , 10 , &My_dection::message_callback, this);
     //         ROS_INFO("aaaaaaa");
     // }
-
     void My_dection::message_callback(const BoundingBoxes& msg) {
 
         int Temp_basket {};
@@ -31,6 +30,23 @@ namespace Image_vision {
                 for (int i = 0; i < num_thing; ++i) 
                     if (msg.bounding_boxes[i].Class == "basket") basket.push_back(msg.bounding_boxes[i]);
                 std::sort(basket.begin(), basket.end(), My_dection::Bas_Compare);
+                // 
+                // 这里添加世界坐标代码
+                /** 计算流程
+                 * 首先更具焦距算出Zc
+                 * 通过内参矩阵算出Xc Yc
+                 * 考虑旋转 
+                */
+               double Temp_distance = (Fx * Real_Size_baeket) / (basket[2].xmax - basket[2].xmin);
+               double Xc = ((( \
+                            (basket[3].xmax + basket[3].xmin) / 2 + (basket[1].xmax + basket[1].xmin) / 2) / 2 \
+                            + (basket[2].xmax + basket[2].xmin) / 2 ) / 2 - Ux ) * Temp_distance / Fx; 
+               double Xy = - ((basket[2].ymax + basket[2].ymin) / 2 - Uy) * Temp_distance / Fy; ;
+               ROS_INFO("distance = %lf", Temp_distance);
+               ROS_INFO("Xc = %lf", Xc);
+               ROS_INFO("Xy = %lf", Xy);
+               ROS_INFO("\n");
+               
                 std::array<int, 5> sorted = {0, 1, 2, 3, 4};
                 std::sort(sorted.begin(), sorted.end(), [&](int a, int b) {
                     return abs((basket[a].xmin + basket[a].xmax) / 2 - 320 ) < abs((basket[b].xmin + basket[b].xmax) / 2 - 320);});

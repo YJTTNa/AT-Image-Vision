@@ -1,2 +1,2 @@
-realsense_ros/realsense2_camera:realsense_ros/realsense2_description:rosserial_self_launch:yolov5_dection:yolov5_drive:yolov5_launch:yolov5_ros:yolov5_ros_msgs
+realsense_ros/realsense2_camera:realsense_ros/realsense2_description:rosserial_self_launch:yolov5_dection:yolov5_drive:yolov5_launch:yolov5_ros:yolov5_ros_msgs:yolov5_timer
 -DCMAKE_BUILD_TYPE=RelWithDebInfo -G Unix Makefiles -DCATKIN_DEVEL_PREFIX=/home/yami/AT-Image-Vision/AT-Image-Vision-2/devel_isolated -DCMAKE_INSTALL_PREFIX=/home/yami/AT-Image-Vision/AT-Image-Vision-2/install_isolated

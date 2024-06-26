@@ -212,3 +212,10 @@
 /home/yami/AT-Image-Vision/AT-Image-Vision-2/build/yolov5_drive/CMakeFiles/test.dir
 /home/yami/AT-Image-Vision/AT-Image-Vision-2/build/yolov5_drive/CMakeFiles/descion.dir
 /home/yami/AT-Image-Vision/AT-Image-Vision-2/build/yolov5_drive/CMakeFiles/red_or_blue.dir
+/home/yami/AT-Image-Vision/AT-Image-Vision-2/build/yolov5_timer/CMakeFiles/install/strip.dir
+/home/yami/AT-Image-Vision/AT-Image-Vision-2/build/yolov5_timer/CMakeFiles/install/local.dir
+/home/yami/AT-Image-Vision/AT-Image-Vision-2/build/yolov5_timer/CMakeFiles/install.dir
+/home/yami/AT-Image-Vision/AT-Image-Vision-2/build/yolov5_timer/CMakeFiles/list_install_components.dir
+/home/yami/AT-Image-Vision/AT-Image-Vision-2/build/yolov5_timer/CMakeFiles/rebuild_cache.dir
+/home/yami/AT-Image-Vision/AT-Image-Vision-2/build/yolov5_timer/CMakeFiles/edit_cache.dir
+/home/yami/AT-Image-Vision/AT-Image-Vision-2/build/yolov5_timer/CMakeFiles/test.dir
