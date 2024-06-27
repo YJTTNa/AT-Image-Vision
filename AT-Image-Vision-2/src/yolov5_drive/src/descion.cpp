@@ -72,6 +72,8 @@ namespace Image_vision {
 
                 关注我方底球的框 
             */
+
+           //ddededw
             if (Send_num == 0) {
                 // 这里是博弈代码 需要上位板进入轮询发送检测模式 
                 // 这里就体现了进入数据里就存的作用
