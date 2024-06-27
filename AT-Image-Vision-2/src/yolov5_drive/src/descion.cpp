@@ -47,14 +47,12 @@ namespace Image_vision {
             blue = 1;
             ROS_INFO("My are blue!!");
         }
-        else {
-            ROS_INFO("Have a problen");
-        }
+        else ROS_INFO("Stay the Same, Have a problen");
         // 整体的逻辑还是 mode=1 为识别模式 mode=2 为发送模式 
         if (msg.mode == 1) {
-
             if (Re_Set == 1) {
                 Send_num = 0;
+                // 我在这里发3进行复位
             }
             ROS_INFO("1 puls ");
             Re_Set = 0;
@@ -67,15 +65,21 @@ namespace Image_vision {
             ROS_INFO("2 puls");
             if (Deq.size() == 0) Send_num = rand() % 5;
             else Send_num = Deq.Find_Multifrequency();
+            /*
+                这里解决的BUG
+                可以二个数据的发送
+                防守阶段 可能会发0在 其他满框 只能往底球为对方的框放的时候
+
+                关注我方底球的框 
+            */
             if (Send_num == 0) {
-                // 这里是博弈代码
-                // 进入轮询发送检测模式
+                // 这里是博弈代码 需要上位板进入轮询发送检测模式 
                 // 这里就体现了进入数据里就存的作用
                 ROS_INFO("%d", Send_num);
             }
             else {
                 ROS_INFO("%d", Send_num);
-                Bask_ID.id = Send_num;
+                Bask_ID.id = Send_num / 10;
                 message_pub.publish(Bask_ID);
             }
         }
@@ -108,7 +112,7 @@ namespace Image_vision {
             }
             else {
                 ROS_INFO("%d", Send_num);
-                Bask_ID.id = Send_num;
+                Bask_ID.id = Send_num / 10;
                 message_pub.publish(Bask_ID);
             }
         }
@@ -145,8 +149,8 @@ namespace Image_vision {
             if (Mark_Arr_Rank.arrs[i].arr[0] == 0) Mark = Mark;
             else if (Mark_Arr_Rank.arrs[i].arr[0] == 1) Mark = Mark_Arr_Rank.arrs[i].arr[1]==red?Mark+2:Mark-2; 
             else if (Mark_Arr_Rank.arrs[i].arr[0] == 2) {
-                if (Mark_Arr_Rank.arrs[i].arr[1] != Mark_Arr_Rank.arrs[i].arr[2]) Mark = Mark_Arr_Rank.arrs[i].arr[1]==red?Mark+3:Mark+4;
-                else Mark = Mark_Arr_Rank.arrs[i].arr[2]==red?Mark+3:Mark-3;
+                if (Mark_Arr_Rank.arrs[i].arr[1] != Mark_Arr_Rank.arrs[i].arr[2]) Mark = Mark_Arr_Rank.arrs[i].arr[1]==red?Mark+3:Mark+3;
+                else Mark = Mark_Arr_Rank.arrs[i].arr[2]==red?Mark+2:Mark-3;
             }
             else if (Mark_Arr_Rank.arrs[i].arr[0] == 3) {
                 // 关键
@@ -154,17 +158,6 @@ namespace Image_vision {
                 // 1. 红蓝红
                 // 8. 红红红
                 // 6. 蓝红红
-                if (Mark_Arr_Rank.arrs[i].arr[3] == red) {
-                    if (Mark_Arr_Rank.arrs[i].arr[1] != Mark_Arr_Rank.arrs[i].arr[2])
-                        Mark = Mark_Arr_Rank.arrs[i].arr[1] == red ? Mark+5 : Mark+7;
-                    Mark = Mark_Arr_Rank.arrs[i].arr[1] == red ? Mark+3 : Mark-4;
-                }
-                else {
-                    if (Mark_Arr_Rank.arrs[i].arr[1] != Mark_Arr_Rank.arrs[i].arr[2]) 
-                        Mark = Mark_Arr_Rank.arrs[i].arr[1] == red ? Mark+1 : Mark+5;
-                    Mark = Mark_Arr_Rank.arrs[i].arr[1] == red ? Mark+4 : Mark-3;
-                }
-            }
                 //*B: 劣势类 --
                 // 4. 红蓝蓝 (有机会)
                 // 5. 蓝红蓝 (对面慢但是运气好)
@@ -172,8 +165,19 @@ namespace Image_vision {
                 //*C: 中类   --
                 // 2. 红红蓝
                 // 3. 蓝蓝红
+                if (Mark_Arr_Rank.arrs[i].arr[3] == red) {
+                    if (Mark_Arr_Rank.arrs[i].arr[1] != Mark_Arr_Rank.arrs[i].arr[2])
+                        Mark = Mark_Arr_Rank.arrs[i].arr[1] == red ? Mark+4 : Mark+4;
+                    Mark = Mark_Arr_Rank.arrs[i].arr[1] == red ? Mark+3 : Mark+1;
+                }
+                else {
+                    if (Mark_Arr_Rank.arrs[i].arr[1] != Mark_Arr_Rank.arrs[i].arr[2]) 
+                        Mark = Mark_Arr_Rank.arrs[i].arr[1] == red ? Mark-3 : Mark+1;
+                    Mark = Mark_Arr_Rank.arrs[i].arr[1] == red ? Mark+2 : Mark-3;
+                }
+            }
+
         }
-        // 这里的mark是累计了5个框的数值
         return Mark;
         // 用完Last_Mark 记得更新
     }
@@ -204,6 +208,9 @@ namespace Image_vision {
                 ROS_INFO("now state %s", trackerStateMachine.My_string_state().c_str());
             }
             else Lost_Winner_Num++;
+
+            // 小组赛代码
+            // this->Docile_Anger(arr);
         }
         else if (Lost >= 3) {
             ROS_INFO("before state %s", trackerStateMachine.My_string_state().c_str());
@@ -213,6 +220,8 @@ namespace Image_vision {
                 ROS_INFO("now state %s", trackerStateMachine.My_string_state().c_str());
             }
             else Lost_Winner_Num++;
+            // 小组赛代码
+            // this->Docile_Anger(arr);
         }
         else {
             // 防止少识别以为不是大胜
@@ -228,19 +237,30 @@ namespace Image_vision {
         }
     }
 
-    void Descion_Machine::Docile_Anger(const arr_rank arr_rank_Mark) {
+    void Descion_Machine::Docile_Anger(arr_rank arr_rank_Mark) {
         // 调用评估函数 先跑简单的流程
         int Temp_rank_Mark = Mark(arr_rank_Mark);
         // 调用评估函数之后
         if (Temp_rank_Mark > Mark_Treshold) {
-            // 接上变量并入队列
-            // 在要入队列之前需要先打印状态
+            // 状态的切换
             ROS_INFO("before state %s", trackerStateMachine.My_string_state().c_str());
             if (trackerStateMachine.Get_State() != TrackerStateMachine::State::ATTACK) {
                 trackerStateMachine.Set_Attack();
                 ROS_INFO("now state %s", trackerStateMachine.My_string_state().c_str());
             }
-            Deq.push_back(Basket_Attack(arr_rank_Mark));
+
+            int TEMPP = Basket_Attack(arr_rank_Mark);
+            for (int e = 1; e < 4; ++e) {
+                if (arr_rank_Mark.arrs[TEMPP - 1].arr[e] == 0) {
+                    arr_rank_Mark.arrs[TEMPP - 1].arr[0]++;
+                    arr_rank_Mark.arrs[TEMPP - 1].arr[e] = blue;    
+                    break;
+                }
+            }
+            Temp_rank_Mark = Mark(arr_rank_Mark);
+            if (Temp_rank_Mark > Mark_Treshold) TEMPP = TEMPP * 10 + Basket_Attack(arr_rank_Mark);
+            else TEMPP = TEMPP * 10 + Basket_Defend(arr_rank_Mark);
+            Deq.push_back(TEMPP);
         }
         else {
             ROS_INFO("before state %s", trackerStateMachine.My_string_state().c_str());
@@ -248,21 +268,35 @@ namespace Image_vision {
                 trackerStateMachine.Set_Defend();
                 ROS_INFO("now state %s", trackerStateMachine.My_string_state().c_str());
             }
-            Deq.push_back(Basket_Defend(arr_rank_Mark));
+            int TEMPP = Basket_Defend(arr_rank_Mark);
+            if (TEMPP != 0) {
+                for (int e = 1; e < 4; ++e) {
+                    if (arr_rank_Mark.arrs[TEMPP - 1].arr[e] == 0) {
+                        arr_rank_Mark.arrs[TEMPP - 1].arr[0]++;
+                        arr_rank_Mark.arrs[TEMPP - 1].arr[e] = blue;    
+                        break;
+                    }
+                }
+                Temp_rank_Mark = Mark(arr_rank_Mark);
+                if (Temp_rank_Mark > Mark_Treshold) TEMPP = TEMPP * 10 + Basket_Attack(arr_rank_Mark);
+                else TEMPP = TEMPP * 10 + Basket_Defend(arr_rank_Mark);
+                Deq.push_back(TEMPP);
+            }
+            else Deq.push_back(TEMPP);
         }
     }
     //* Defend 防止对面大胜 
     int Descion_Machine::Basket_Defend(const arr_rank arr_and_rank) {
         for (int i = 0; i <= 4; ++i) {
-            if (arr_and_rank.arrs[i].arr[0] == 2 && arr_and_rank.arrs[i].arr[2] == blue) return i + 1;
-        }
-        // 这里是两个球的情况
-        for (int i = 0; i <= 4; ++i) {
-            if (arr_and_rank.arrs[arr_and_rank.rank[i] - 1].arr[0] == 2) return arr_and_rank.rank[i];
+            if (arr_and_rank.arrs[i].arr[0] == 2 && (arr_and_rank.arrs[i].arr[2] != arr_and_rank.arrs[i].arr[1])) return i + 1;
         }
         // 这里是空框的情况
         for (int i = 0; i <= 4; ++i) {
             if (arr_and_rank.arrs[arr_and_rank.rank[i] - 1].arr[0] == 0) return arr_and_rank.rank[i];
+        }
+        // 这里是两个球的情况
+        for (int i = 0; i <= 4; ++i) {
+            if (arr_and_rank.arrs[arr_and_rank.rank[i] - 1].arr[0] == 2) return arr_and_rank.rank[i];
         }
         // 这里补充的情况
         for (int i = 0; i <= 4; ++i) {
@@ -304,7 +338,8 @@ namespace Image_vision {
     int Fixed_Deque::Find_Multifrequency() const {
         int Temp {};
         int ssend_num {};
-        if (data.size() != 5) {
+        if (data.size() == 0) ssend_num = 1;
+        else if (data.size() != 5) {
             ssend_num = data.at(data.size() - 1);
         } else {
             for (const auto & Ha_num : data) {
@@ -316,7 +351,7 @@ namespace Image_vision {
                     My_map[Ha_num]++;
                 }
             }
-            // 这里可能略有问题后期需要调整
+            // 优先后面的权重
             for (const auto & num : My_set) {
                 if (My_map[num] >= Temp) {
                     Temp = My_map[num];
@@ -329,6 +364,25 @@ namespace Image_vision {
         return ssend_num;
     }
 } // namespace 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 int main(int argc, char * argv[]) {
     ros::init(argc, argv, "descion");

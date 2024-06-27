@@ -42,10 +42,10 @@ namespace Image_vision {
                             (basket[3].xmax + basket[3].xmin) / 2 + (basket[1].xmax + basket[1].xmin) / 2) / 2 \
                             + (basket[2].xmax + basket[2].xmin) / 2 ) / 2 - Ux ) * Temp_distance / Fx; 
                double Xy = - ((basket[2].ymax + basket[2].ymin) / 2 - Uy) * Temp_distance / Fy; ;
-               ROS_INFO("distance = %lf", Temp_distance);
-               ROS_INFO("Xc = %lf", Xc);
-               ROS_INFO("Xy = %lf", Xy);
-               ROS_INFO("\n");
+            //    ROS_INFO("distance = %lf", Temp_distance);
+            //    ROS_INFO("Xc = %lf", Xc);
+            //    ROS_INFO("Xy = %lf", Xy);
+            //    ROS_INFO("\n");
                
                 std::array<int, 5> sorted = {0, 1, 2, 3, 4};
                 std::sort(sorted.begin(), sorted.end(), [&](int a, int b) {

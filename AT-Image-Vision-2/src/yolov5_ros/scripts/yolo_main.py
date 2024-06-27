@@ -13,6 +13,8 @@ import numpy as np
 from std_msgs.msg import Header
 from sensor_msgs.msg import Image
 from yolov5_ros_msgs.msg import BoundingBox, BoundingBoxes
+
+Num1 = 0
 class Yolo_Dect:
     def __init__(self):
 
@@ -46,6 +48,14 @@ class Yolo_Dect:
         self.color_image = cv2.cvtColor(self.color_image, cv2.COLOR_BGR2RGB)
         results = self.model(self.color_image)
         boxs = results.pandas().xyxy[0].values
+        '''
+            这里增加保存图像的代码
+        '''
+        global Num1
+        Num1+=1
+        if Num1 % 5 == 0:
+            Num1 = 0
+            # cv2.imread("", )
         self.dectshow(self.color_image, boxs)
         cv2.waitKey(3)
     def dectshow(self, img, boxs):
