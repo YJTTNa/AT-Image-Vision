@@ -9,6 +9,19 @@
 //// 可以发三要备选******
 
 // 一定要等到甩标志位可以给数
+/*
+    梳理
+    yolo识别是反
+    真红->假蓝 真蓝->假红
+    全局就是红一蓝二
+    实际上是真红是二 真蓝是一
+    我这里是默认为红方
+
+    1 号需要进入红方 跑真红方代码 二为我方
+    2 号需要进入蓝方 跑真蓝方代码 一为我方
+   
+
+*/
 #include "yolov5_drive/descion.h"
 
 namespace Image_vision {
@@ -38,17 +51,17 @@ namespace Image_vision {
         static port_serial Bask_ID;
         // 红蓝方错位问题从这里解决
         if (msg.x == 1) {
-            red = 1;
-            blue = 2;
+            red = 2;
+            blue = 1;
             ROS_INFO("My are red!!");
         }
         else if (msg.x == 2) {
-            red = 2;
-            blue = 1;
+            red = 1;
+            blue = 2;
             ROS_INFO("My are blue!!");
         }
         else ROS_INFO("Stay the Same, Have a problen");
-        // 整体的逻辑还是 mode=1 为识别模式 mode=2 为发送模式 
+        // mode=1 为识别模式 mode=2 为发送模式 
         if (msg.mode == 1) {
             if (Re_Set == 1) {
                 Send_num = 0;
@@ -58,24 +71,25 @@ namespace Image_vision {
             Re_Set = 0;
             Mode = msg.mode;
         }
-        if (msg.mode == 2) {
+        if (msg.mode == 2) {                                                   
             if (Re_Set == 0) {
                 Re_Set = 1;
             }
             ROS_INFO("2 puls");
-            if (Deq.size() == 0) Send_num = rand() % 5;
+            // 如果队列是空的
+            if (Deq.size() == 0) Send_num = rand() % 5 + 1;
             else Send_num = Deq.Find_Multifrequency();
             /*
                 这里解决的BUG
                 可以二个数据的发送
                 防守阶段 可能会发0在 其他满框 只能往底球为对方的框放的时候
-
                 关注我方底球的框 
             */
-            if (Send_num == 0) {
+            if (Send_num >= 100) {
                 // 这里是博弈代码 需要上位板进入轮询发送检测模式 
                 // 这里就体现了进入数据里就存的作用
                 ROS_INFO("%d", Send_num);
+                Bask_ID.id = Send_num % 100;
             }
             else {
                 ROS_INFO("%d", Send_num);
@@ -117,24 +131,21 @@ namespace Image_vision {
             }
         }
         if (msg.data == 3) { 
-            red = 1;
-            blue = 2;
+            red = 2;
+            blue = 1;
             ROS_INFO("%d", blue);
             ROS_INFO("My are red!!");
         }
         if (msg.data == 4) {
-            red = 2;
-            blue = 1;
+            red = 1;
+            blue = 2;
             ROS_INFO("%d", blue);
             ROS_INFO("My are blue!!");
         }
     }
-    // 考虑 瞎放的学校的处理办法
 
     void Descion_Machine::message(const arr_rank & msg) {
-        // 存储当前的排序
-        // 这个可能会用到
-        // 后面
+        // 每帧都会储存下来
         Last_Arr_And_Rank.arrs = msg.arrs;
         Last_Arr_And_Rank.rank = msg.rank;
         if (Mode == 1) this->Lost_or_Win(msg);
@@ -148,8 +159,9 @@ namespace Image_vision {
         for (int i = 0; i <= 4; ++i) {
             if (Mark_Arr_Rank.arrs[i].arr[0] == 0) Mark = Mark;
             else if (Mark_Arr_Rank.arrs[i].arr[0] == 1) Mark = Mark_Arr_Rank.arrs[i].arr[1]==red?Mark+2:Mark-2; 
+            
             else if (Mark_Arr_Rank.arrs[i].arr[0] == 2) {
-                if (Mark_Arr_Rank.arrs[i].arr[1] != Mark_Arr_Rank.arrs[i].arr[2]) Mark = Mark_Arr_Rank.arrs[i].arr[1]==red?Mark+3:Mark+3;
+                if (Mark_Arr_Rank.arrs[i].arr[1] != Mark_Arr_Rank.arrs[i].arr[2]) Mark = Mark+3;
                 else Mark = Mark_Arr_Rank.arrs[i].arr[2]==red?Mark+2:Mark-3;
             }
             else if (Mark_Arr_Rank.arrs[i].arr[0] == 3) {
@@ -208,7 +220,6 @@ namespace Image_vision {
                 ROS_INFO("now state %s", trackerStateMachine.My_string_state().c_str());
             }
             else Lost_Winner_Num++;
-
             // 小组赛代码
             // this->Docile_Anger(arr);
         }
@@ -241,7 +252,7 @@ namespace Image_vision {
         // 调用评估函数 先跑简单的流程
         int Temp_rank_Mark = Mark(arr_rank_Mark);
         // 调用评估函数之后
-        if (Temp_rank_Mark > Mark_Treshold) {
+        if (Temp_rank_Mark >= Mark_Treshold) {
             // 状态的切换
             ROS_INFO("before state %s", trackerStateMachine.My_string_state().c_str());
             if (trackerStateMachine.Get_State() != TrackerStateMachine::State::ATTACK) {
@@ -250,15 +261,17 @@ namespace Image_vision {
             }
 
             int TEMPP = Basket_Attack(arr_rank_Mark);
-            for (int e = 1; e < 4; ++e) {
-                if (arr_rank_Mark.arrs[TEMPP - 1].arr[e] == 0) {
-                    arr_rank_Mark.arrs[TEMPP - 1].arr[0]++;
-                    arr_rank_Mark.arrs[TEMPP - 1].arr[e] = blue;    
-                    break;
-                }
-            }
+            // for (int e = 1; e < 4; ++e) {
+            //     if (arr_rank_Mark.arrs[TEMPP - 1].arr[e] == 0) {
+            //         arr_rank_Mark.arrs[TEMPP - 1].arr[0]++;
+            //         arr_rank_Mark.arrs[TEMPP - 1].arr[e] = blue;    
+            //         break;
+            //     }
+            // }
+            arr_rank_Mark.arrs[TEMPP - 1].arr[0]++;
+            arr_rank_Mark.arrs[TEMPP - 1].arr.push_back(blue);
             Temp_rank_Mark = Mark(arr_rank_Mark);
-            if (Temp_rank_Mark > Mark_Treshold) TEMPP = TEMPP * 10 + Basket_Attack(arr_rank_Mark);
+            if (Temp_rank_Mark >= Mark_Treshold) TEMPP = TEMPP * 10 + Basket_Attack(arr_rank_Mark);
             else TEMPP = TEMPP * 10 + Basket_Defend(arr_rank_Mark);
             Deq.push_back(TEMPP);
         }
@@ -270,13 +283,15 @@ namespace Image_vision {
             }
             int TEMPP = Basket_Defend(arr_rank_Mark);
             if (TEMPP != 0) {
-                for (int e = 1; e < 4; ++e) {
-                    if (arr_rank_Mark.arrs[TEMPP - 1].arr[e] == 0) {
-                        arr_rank_Mark.arrs[TEMPP - 1].arr[0]++;
-                        arr_rank_Mark.arrs[TEMPP - 1].arr[e] = blue;    
-                        break;
-                    }
-                }
+                // for (int e = 1; e < 4; ++e) {
+                //     if (arr_rank_Mark.arrs[TEMPP - 1].arr[e] == 0) {
+                //         arr_rank_Mark.arrs[TEMPP - 1].arr[0]++;
+                //         arr_rank_Mark.arrs[TEMPP - 1].arr[e] = blue;    
+                //         break;
+                //     }
+                // }
+                arr_rank_Mark.arrs[TEMPP - 1].arr[0]++;
+                arr_rank_Mark.arrs[TEMPP - 1].arr.push_back(blue);
                 Temp_rank_Mark = Mark(arr_rank_Mark);
                 if (Temp_rank_Mark > Mark_Treshold) TEMPP = TEMPP * 10 + Basket_Attack(arr_rank_Mark);
                 else TEMPP = TEMPP * 10 + Basket_Defend(arr_rank_Mark);
@@ -290,6 +305,9 @@ namespace Image_vision {
         for (int i = 0; i <= 4; ++i) {
             if (arr_and_rank.arrs[i].arr[0] == 2 && (arr_and_rank.arrs[i].arr[2] != arr_and_rank.arrs[i].arr[1])) return i + 1;
         }
+        for (int i = 0; i <= 4; ++i) {
+            if (arr_and_rank.arrs[i].arr[0] == 2) return i + 1;
+        }
         // 这里是空框的情况
         for (int i = 0; i <= 4; ++i) {
             if (arr_and_rank.arrs[arr_and_rank.rank[i] - 1].arr[0] == 0) return arr_and_rank.rank[i];
@@ -301,6 +319,9 @@ namespace Image_vision {
         // 这里补充的情况
         for (int i = 0; i <= 4; ++i) {
             if (arr_and_rank.arrs[arr_and_rank.rank[i] - 1].arr[0] == 1 && arr_and_rank.arrs[arr_and_rank.rank[i] - 1].arr[1] == red) return arr_and_rank.rank[i];
+        }
+        for (int i = 0; i <= 4; ++i) {
+            if (arr_and_rank.arrs[arr_and_rank.rank[i] - 1].arr[0] == 1 && arr_and_rank.arrs[arr_and_rank.rank[i] - 1].arr[1] == blue) return arr_and_rank.rank[i];
         }
         return 0;
     }
@@ -367,26 +388,9 @@ namespace Image_vision {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 int main(int argc, char * argv[]) {
     ros::init(argc, argv, "descion");
     Image_vision::Descion_Machine desicion_machine;
-    desicion_machine.init_ROS_Sub(1);
+    desicion_machine.init_ROS_Sub(0);
     return 0;
 }

@@ -1,8 +1,6 @@
 #!/bin/bash
- 
-# --- for every Terminal-tab
-source ~/.bashrc  # load ~/.bashrc setup
-cd /home/yami/Yolov5_ros-master
+source ~/.bashrc
+cd home/yami/AT-Image-Vision/AT-Image-Vision-2
 # 预计需要三个终端
 # 1. 启动yolo_v5 一般不寄
 {
@@ -12,8 +10,9 @@ cd /home/yami/Yolov5_ros-master
 # 2. 启动串口通信
 sleep 1s
 {
-	gnome-terminal --tab "rosserials" -- "./shell_rosseroal.sh 2> output.txt"
-}&
+	gnome-terminal --tab "rosserials" -- "./shell_rosseroal.sh"
+}
+exec bash
 # 3. 挂一个终端始终jians
 # sleep 1s
 # {

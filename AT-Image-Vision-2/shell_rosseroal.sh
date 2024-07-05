@@ -19,6 +19,6 @@ conda activate yolo
 source ./devel/setup.bash
 sudo chmod +777 /dev/ttyUSB0
 roslaunch rosserial_self_launch start_rosserial.launch
-# exec bash
+exec bash
 
 

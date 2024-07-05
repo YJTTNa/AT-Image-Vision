@@ -70,14 +70,16 @@ namespace Image_vision {
                         if (ball[m - 1].Class == "red") pub_arr.arr.push_back(1);
                         else if (ball[m - 1].Class == "blue") pub_arr.arr.push_back(2); //pub_arr_rank.arrs[i].arr[m + 1] = 2; 
                     }
-                    if (Sum_ball < 3)
-                        for (int i = Sum_ball; i <= 3; ++i) pub_arr.arr.push_back(0); 
+                    // BUG *************************************************************************
+                    if (Sum_ball < 3) {
+                        for (int i = Sum_ball; i < 3; ++i) pub_arr.arr.push_back(0); 
+                    }
+                    // BUG *************************************************************************
                     pub_arr_rank.arrs.push_back(pub_arr);
                     pub_arr.arr.clear();
                     Sum_ball = 0;
                     ball.clear();
                 }
-                
                 static ros::NodeHandle nh;
                 static ros::Publisher pub_Arr_Rank = nh.advertise< arr_rank >("My_arr_rank", 10);
                 // 每处理好一张都会发出去

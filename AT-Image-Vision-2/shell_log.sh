@@ -15,7 +15,7 @@ unset __conda_setup
 conda activate yolo
 # cd /home/yami/Yolov5_ros-master
 source ./devel/setup.bash
-roslaunch yolov5_ros 5.launch
+roslaunch yolov5_ros yolov5_start.launch
 exec bash
 
  

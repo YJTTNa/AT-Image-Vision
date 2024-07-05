@@ -24,8 +24,8 @@
     <param name="image_topic"       value="/usb_cam/image_raw" />
     <param name="pub_topic"         value="BoundingBoxes" />
     <param name="camera_frame"       value="camera_color_frame"/>
-    <param name="conf"              value="0.65" />   <!--0.15-->
-    <param name="iou"               value="0.7" />    <!--0.6-->
+    <param name="conf"              value="0.55" />   <!--0.15-->
+    <param name="iou"               value="0.6" />    <!--0.6-->
   </node>
   
   <node pkg="yolov5_dection" type="dection_basket" name="dection_basket" output="screen"/>

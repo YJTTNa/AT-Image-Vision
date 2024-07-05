@@ -15,6 +15,7 @@ from sensor_msgs.msg import Image
 from yolov5_ros_msgs.msg import BoundingBox, BoundingBoxes
 
 Num1 = 0
+Num2 = 5000
 class Yolo_Dect:
     def __init__(self):
 
@@ -51,11 +52,13 @@ class Yolo_Dect:
         '''
             这里增加保存图像的代码
         '''
-        global Num1
+        global Num1,Num2
         Num1+=1
-        if Num1 % 5 == 0:
+        IMAGE = "/home/yami/AT-Image-Vision/AT-Image-Vision-2/IMAGE/"
+        if Num1 % 10 == 0:
             Num1 = 0
-            # cv2.imread("", )
+            Num2+=1
+            # cv2.imwrite(IMAGE+str(Num2)+".jpg", self.color_image)
         self.dectshow(self.color_image, boxs)
         cv2.waitKey(3)
     def dectshow(self, img, boxs):
