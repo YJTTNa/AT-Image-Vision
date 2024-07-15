@@ -12,6 +12,7 @@ namespace Image_vision {
     //         message_sub = sh.subscribe("/yolov5/BoundingBoxes" , 10 , &My_dection::message_callback, this);
     //         ROS_INFO("aaaaaaa");
     // }
+    // 这个回调函数是每时每刻都会处理
     void My_dection::message_callback(const BoundingBoxes& msg) {
 
         int Temp_basket {};
@@ -21,11 +22,15 @@ namespace Image_vision {
         
         arr_rank pub_arr_rank;
         arr pub_arr;
+
+        static ros::NodeHandle nh;
+        static ros::Publisher pub_Arr_Rank = nh.advertise< arr_rank >("My_arr_rank", 10);
         if (!msg.bounding_boxes.empty()) {
             int16_t num_thing = msg.bounding_boxes[msg.bounding_boxes.size() - 1].num; 
             for (int i = 0; i < num_thing; ++i)
                 if (msg.bounding_boxes[i].Class == "basket") Temp_basket++;
-                // 这里需要考虑与那个节点的交互性问题
+
+
             if (Temp_basket == 5 && Mode == 1) {
                 for (int i = 0; i < num_thing; ++i) 
                     if (msg.bounding_boxes[i].Class == "basket") basket.push_back(msg.bounding_boxes[i]);
@@ -80,11 +85,48 @@ namespace Image_vision {
                     Sum_ball = 0;
                     ball.clear();
                 }
-                static ros::NodeHandle nh;
-                static ros::Publisher pub_Arr_Rank = nh.advertise< arr_rank >("My_arr_rank", 10);
                 // 每处理好一张都会发出去
                 // for (int i = 0; i < 4; ++i) ROS_INFO("%d", pub_arr_rank.arrs[4].arr[i]);
                 // ROS_INFO("7877");
+                pub_Arr_Rank.publish(pub_arr_rank);
+            }
+            if (Temp_basket < 5 && Temp_basket > 0 && Mode == 1) {
+                for (int i = 0; i < num_thing; ++i) 
+                    if (msg.bounding_boxes[i].Class == "basket") basket.push_back(msg.bounding_boxes[i]);
+                std::sort(basket.begin(), basket.end(), My_dection::Bas_Compare);
+                std::array<int, 5> sorted = {0, 1, 2, 3, 4};
+                std::sort(sorted.begin(), sorted.end(), [&](int a, int b) {
+                    return abs((basket[a].xmin + basket[a].xmax) / 2 - 320 ) < abs((basket[b].xmin + basket[b].xmax) / 2 - 320);});
+                                for (int q = 0; q < 5; ++q) pub_arr_rank.rank.emplace_back(sorted[q] + 1);
+                for (int i = 0; i < 5; ++i) {
+                    for (int j = 0; j < num_thing; ++j) {
+                        // 这里来调整符合框里的球的数量
+                        if (msg.bounding_boxes[j].Class != "basket" && 
+                            (msg.bounding_boxes[j].xmin + msg.bounding_boxes[j].xmax) / 2 > basket[i].xmin - 5 &&
+                            (msg.bounding_boxes[j].xmin + msg.bounding_boxes[j].xmax) / 2 < basket[i].xmax + 5 && 
+                            (msg.bounding_boxes[j].ymin + msg.bounding_boxes[j].ymax) / 2 > basket[i].ymin - 30 &&
+                            (msg.bounding_boxes[j].ymin + msg.bounding_boxes[j].ymax) / 2 < basket[i].ymax + 5) {
+                                ball.push_back(msg.bounding_boxes[j]);
+                                Sum_ball++;
+                        }
+                    }
+                    std::sort(ball.begin(), ball.end(), My_dection::Ball_Compare);
+                    pub_arr.arr.push_back(Sum_ball);
+                    for (int m = 1; m <= Sum_ball; ++m) {
+                        if (ball[m - 1].Class == "red") pub_arr.arr.push_back(1);
+                        else if (ball[m - 1].Class == "blue") pub_arr.arr.push_back(2); //pub_arr_rank.arrs[i].arr[m + 1] = 2; 
+                    }
+                    // BUG *************************************************************************
+                    if (Sum_ball < 3) {
+                        for (int i = Sum_ball; i < 3; ++i) pub_arr.arr.push_back(0); 
+                    }
+                    // BUG *************************************************************************
+                    pub_arr_rank.arrs.push_back(pub_arr);
+                    pub_arr.arr.clear();
+                    Sum_ball = 0;
+                    ball.clear();
+                }
+                // 这里塞一个发送 所以0号还是距离中心线最近的框
                 pub_Arr_Rank.publish(pub_arr_rank);
             }
         basket.clear();

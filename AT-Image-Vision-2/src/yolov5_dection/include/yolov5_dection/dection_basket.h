@@ -43,6 +43,8 @@ namespace Image_vision {
 
             static bool Ball_Compare(const BoundingBox & a , const BoundingBox &b) { return a.ymin > b.ymin; }
 
+            inline void SetMode(const int mode) { Mode == mode; }
+            
             void spin() { ros::spin(); }
         private:
             int Mode = 1;

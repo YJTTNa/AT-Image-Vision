@@ -144,13 +144,18 @@ namespace Image_vision {
         //* 一般都是变量私有化
         private:
             // 这里用于备选框的距离使用
-            typedef struct {
-                int one[5] =   {1, 2, 3, 4, 5};
-                int two[5] =   {2, 3, 1, 4, 5};
-                int three[5] = {3, 2, 4, 1, 5};
-                int four[5] =  {4, 3, 5, 2, 1};
-                int five[5] =  {5, 4, 3, 2, 1};
-            } My_Rank;
+            // typedef struct {
+            //     int one[5] =   {1, 2, 3, 4, 5};
+            //     int two[5] =   {2, 3, 1, 4, 5};
+            //     int three[5] = {3, 2, 4, 1, 5};
+            //     int four[5] =  {4, 3, 5, 2, 1};
+            //     int five[5] =  {5, 4, 3, 2, 1};
+            // } My_Rank;
+            std::vector<std::vector<int>> My_Rank { {1, 2, 3, 4, 5}, 
+                                                    {2, 3, 1, 4, 5},
+                                                    {3, 2, 4, 1, 5},
+                                                    {4, 3, 5, 2, 1},
+                                                    {5, 4, 3, 2, 1} };
             TrackerStateMachine trackerStateMachine;
             // 定义接口队列
             Fixed_Deque Deq = Fixed_Deque(5);

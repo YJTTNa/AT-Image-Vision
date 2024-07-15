@@ -221,7 +221,7 @@ namespace Image_vision {
             }
             else Lost_Winner_Num++;
             // 小组赛代码
-            // this->Docile_Anger(arr);
+            this->Docile_Anger(arr);
         }
         else if (Lost >= 3) {
             ROS_INFO("before state %s", trackerStateMachine.My_string_state().c_str());
@@ -232,7 +232,7 @@ namespace Image_vision {
             }
             else Lost_Winner_Num++;
             // 小组赛代码
-            // this->Docile_Anger(arr);
+            this->Docile_Anger(arr);
         }
         else {
             // 防止少识别以为不是大胜
@@ -271,6 +271,7 @@ namespace Image_vision {
             arr_rank_Mark.arrs[TEMPP - 1].arr[0]++;
             arr_rank_Mark.arrs[TEMPP - 1].arr.push_back(blue);
             Temp_rank_Mark = Mark(arr_rank_Mark);
+            arr_rank_Mark.rank = My_Rank[TEMPP];
             if (Temp_rank_Mark >= Mark_Treshold) TEMPP = TEMPP * 10 + Basket_Attack(arr_rank_Mark);
             else TEMPP = TEMPP * 10 + Basket_Defend(arr_rank_Mark);
             Deq.push_back(TEMPP);
@@ -293,7 +294,8 @@ namespace Image_vision {
                 arr_rank_Mark.arrs[TEMPP - 1].arr[0]++;
                 arr_rank_Mark.arrs[TEMPP - 1].arr.push_back(blue);
                 Temp_rank_Mark = Mark(arr_rank_Mark);
-                if (Temp_rank_Mark > Mark_Treshold) TEMPP = TEMPP * 10 + Basket_Attack(arr_rank_Mark);
+                arr_rank_Mark.rank = My_Rank[TEMPP];
+                if (Temp_rank_Mark >= Mark_Treshold) TEMPP = TEMPP * 10 + Basket_Attack(arr_rank_Mark);
                 else TEMPP = TEMPP * 10 + Basket_Defend(arr_rank_Mark);
                 Deq.push_back(TEMPP);
             }
